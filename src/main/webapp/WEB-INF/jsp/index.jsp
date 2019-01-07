@@ -23,6 +23,7 @@
        url:'/customer/getAll',
        method:'get'">
     <thead>
+
     <tr>
         <th data-options="field:'customerId',width:80">客户ID</th>
         <th data-options="field:'companyName',width:110">companyName</th>
