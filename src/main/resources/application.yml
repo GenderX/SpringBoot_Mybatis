@@ -3,6 +3,11 @@ server:
 
 
 spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
   datasource:
     name: mysql_test
     type: com.alibaba.druid.pool.DruidDataSource
@@ -36,4 +41,7 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
   type-aliases-package: com.example.model  # 注意：对应实体类的路径
+
+
+
 

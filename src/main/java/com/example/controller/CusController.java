@@ -4,9 +4,12 @@ import com.example.dao.CusDao;
 import com.example.model.Customers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @author ：LiCan
@@ -24,6 +27,17 @@ public class CusController {
     @RequestMapping("/{id}")
   public  Customers select(@PathVariable String id){
         Customers customers = cusDao.slectById(id);
+        return customers;
+    }
+    @RequestMapping("/hello")
+    public String hello(){
+        System.out.println("11111111111111111111111111111111111111");
+        return "index";
+    }
+    @GetMapping("getAll")
+    @ResponseBody
+    public List<Customers> getAllCus(){
+        List<Customers> customers = cusDao.selectAllCustomers();
         return customers;
     }
 

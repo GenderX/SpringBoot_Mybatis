@@ -4,4 +4,8 @@
     <select id="slectById" resultType="com.example.model.Customers">
         select * from  customers where CustomerID=#{id}
     </select>
+
+    <select id="selectAllCustomers" resultType="com.example.model.Customers">
+        select * from  customers
+    </select>
 </mapper>
