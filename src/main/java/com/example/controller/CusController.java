@@ -5,15 +5,14 @@ import com.example.mapper.customersMapper;
 import com.example.model.customers;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.zip.CheckedOutputStream;
 
 /**
  * @author ：LiCan
@@ -47,6 +46,28 @@ public class CusController {
         data.put("rows",customers);
         data.put("total",rowpage.getTotal());
         return data;
+    }
+    @RequestMapping("/insertCus")
+    @ResponseBody
+    public Object insertCus(customers customers){
+        Boolean flag=false;
+        Integer insert=0;
+        String errorMsg;
+        HashMap<String, Object> map = new HashMap<>();
+        try {
+           insert = customersMapper.insert(customers);
+            if (insert!=0){
+                flag=true;
+            }
+        }catch (Exception e)
+        {
+            errorMsg = e.getMessage();
+            map.put("errorMsg",errorMsg);
+        }
+
+        map.put("success",true);
+
+        return map;
     }
 
 }
