@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.categoriesMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.categories" >
+    <id column="CategoryID" property="categoryid" jdbcType="INTEGER" />
+    <result column="CategoryName" property="categoryname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.model.categoriesWithBLOBs" extends="BaseResultMap" >
+    <result column="Description" property="description" jdbcType="LONGVARCHAR" />
+    <result column="Picture" property="picture" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CategoryID, CategoryName
+  </sql>
+  <sql id="Blob_Column_List" >
+    Description, Picture
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from categories
+    where CategoryID = #{categoryid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from categories
+    where CategoryID = #{categoryid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.categoriesWithBLOBs" >
+    insert into categories (CategoryID, CategoryName, Description, 
+      Picture)
+    values (#{categoryid,jdbcType=INTEGER}, #{categoryname,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}, 
+      #{picture,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.categoriesWithBLOBs" >
+    insert into categories
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="categoryid != null" >
+        CategoryID,
+      </if>
+      <if test="categoryname != null" >
+        CategoryName,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="picture != null" >
+        Picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="categoryname != null" >
+        #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.categoriesWithBLOBs" >
+    update categories
+    <set >
+      <if test="categoryname != null" >
+        CategoryName = #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="picture != null" >
+        Picture = #{picture,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where CategoryID = #{categoryid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.model.categoriesWithBLOBs" >
+    update categories
+    set CategoryName = #{categoryname,jdbcType=VARCHAR},
+      Description = #{description,jdbcType=LONGVARCHAR},
+      Picture = #{picture,jdbcType=LONGVARBINARY}
+    where CategoryID = #{categoryid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.categories" >
+    update categories
+    set CategoryName = #{categoryname,jdbcType=VARCHAR}
+    where CategoryID = #{categoryid,jdbcType=INTEGER}
+  </update>
+</mapper>
