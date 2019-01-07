@@ -1,6 +1,6 @@
 package com.example.dao;
 
-import com.example.model.Customers;
+import com.example.model.customers;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -16,8 +16,9 @@ import java.util.List;
 @Mapper
 @Repository
 public interface CusDao {
-    Customers slectById(String id);
+    customers slectById(String id);
 
-    List<Customers> selectAllCustomers();
+    List<customers> selectAllCustomers();
+
 }
 

@@ -16,19 +16,22 @@
 <h2>customers DataGrid</h2>
 <div style="margin:20px 0;"></div>
 
-<table class="easyui-datagrid" title="Customers DataGrid" style="width:1000px;height:300px;"
+<table class="easyui-datagrid" title="Customers DataGrid" style="width:1040px;height:300px;"
        data-options="
+       pagination:true,
        singleSelect:true,
        collapsible:true,
        url:'/customer/getAll',
-       method:'get'">
+       method:'get',
+       striped:true"
+       >
     <thead>
 
     <tr>
-        <th data-options="field:'customerId',width:80">客户ID</th>
-        <th data-options="field:'companyName',width:110">companyName</th>
-        <th data-options="field:'contactName',width:80,align:'right'">contactName</th>
-        <th data-options="field:'contactTitle',width:80,align:'right'">contactTitle</th>
+        <th data-options="field:'customerid',width:80">客户ID</th>
+        <th data-options="field:'companyname',width:110">companyName</th>
+        <th data-options="field:'contactname',width:80,align:'right'">contactName</th>
+        <th data-options="field:'contacttitle',width:80,align:'right'">contactTitle</th>
         <th data-options="field:'address',width:200">address</th>
         <th data-options="field:'city',width:60,align:'center'">city</th>
         <th data-options="field:'region',width:60,align:'center'">region</th>
@@ -40,6 +43,5 @@
     </tr>
     </thead>
 </table>
-
 </body>
 </html>

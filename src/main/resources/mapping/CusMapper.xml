@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.dao.CusDao" >
-    <select id="slectById" resultType="com.example.model.Customers">
+    <select id="slectById" resultType="com.example.model.customers">
         select * from  customers where CustomerID=#{id}
     </select>
 
-    <select id="selectAllCustomers" resultType="com.example.model.Customers">
+    <select id="selectAllCustomers" resultType="com.example.model.customers">
         select * from  customers
     </select>
 </mapper>
