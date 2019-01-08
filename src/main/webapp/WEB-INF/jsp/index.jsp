@@ -1,127 +1,62 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%--
+  Created by IntelliJ IDEA.
+  User: Li Tsan
+  Date: 2019/1/8
+  Time: 10:36
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>NorthWind主页</title>
+</head>
 <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
 <script type="text/javascript" src="/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
-
-
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Insert title here</title>
-</head>
-<body>
 <script type="text/javascript">
-  var url;
-
-  function newUser() {
-    //打开一个对话框
-    $('#dlg').dialog('open').dialog('setTitle', 'New User');
-    $('#fm').form('clear');
-    url = '/customer/insertCus';
-  }
-  function  editUser() {
-    var row = $('#dg').datagrid('getSelected');
-    if (row){
-      $('#dlg').dialog('open').dialog('setTitle','Edit User');
-      $('#fm').form('load',row);
-      url = '/customer/updateCustomer?id='+row.customerid;
+  function openTab(text, url, iconCls) {
+    if($("#tabs").tabs("exists", text)) {
+      //如果已经存在，则使之处于选中的状态
+      $("#tabs").tabs("select", text);
+    } else {
+      //如果不存在则新增加一个
+      var content = "<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src='" + url + "'></iframe>";
+      $("#tabs").tabs("add", {
+        title: text, //标题
+        iconCls: iconCls, //图标
+        closable: true, //可以关闭
+        content: content //内容，内嵌一个 iframe！
+      });
     }
-
-  }
-
-  function saveUser() {
-    $('#fm').form('submit', {
-      url: url,
-      onSubmit: function () {
-        return $(this).form('validate');
-      },
-      success: function(result){
-        var result = eval('('+result+')');
-        if (result.errorMsg){
-          $('#dlg').dialog('close');
-          $('#dg').datagrid('reload');
-          $.messager.show({
-            title: 'Error',
-            msg: result.errorMsg
-          });
-        } else {
-          $('#dlg').dialog('close');        // close the dialog
-          $('#dg').datagrid('reload');    // reload the user data
-        }
-      }
-
-    });
   }
 
 </script>
+<body>
+<div id="cc" class="easyui-layout"   style="width:1690px;height:800px;">
+    <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
+    <div data-options="region:'west',title:'菜单',split:true," style="width:200px;">
+        <ul>
+            <li><a href="javascript:openTab('添加','/page/grid','icon-add')">菜单1</a></li>
+            <li><a href="#">菜单2</a></li>
+            <li><a href="#">菜单3</a></li>
+            <li><a href="#">菜单4</a></li>
+            <li><a href="#">菜单5</a></li>
+        </ul>
+    </div>
+    <div region="center">
+        <div class="easyui-tabs" fit="true" border="false" id="tabs">
+            <div title="首页" data-options="iconCls:'icon-help'">
+                <div align="center" style="padding-top: 100px">
+                    <font color="green" size="10">欢迎使用</font>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<table id="dg" class="easyui-datagrid" title="Customers DataGrid" style="width:100%;height:auto"
-       data-options="
-       pagination:true,
-       singleSelect:true,
-       collapsible:true,
-       url:'/customer/getAll',
-       method:'get',
-       striped:true,
-       toolbar:'#toolbar' "
->
-    <thead>
-
-    <tr>
-        <th data-options="field:'customerid',width:80">客户ID</th>
-        <th data-options="field:'companyname',width:230">companyName</th>
-        <th data-options="field:'contactname',width:140,align:'left'">contactName</th>
-        <th data-options="field:'contacttitle',width:140,align:'left'">contactTitle</th>
-        <th data-options="field:'address',width:200">address</th>
-        <th data-options="field:'city',width:90,align:'left'">city</th>
-        <th data-options="field:'region',width:60,align:'center'">region</th>
-        <th data-options="field:'postalCode',width:90,align:'center'">postalCode</th>
-        <th data-options="field:'country',width:90,align:'center'">country</th>
-        <th data-options="field:'phone',width:120,align:'left'">phone</th>
-        <th data-options="field:'fax',width:120,align:'left'">fax</th>
-
-    </tr>
-    </thead>
-</table>
-<div id="toolbar">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">添加用户</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
-       onclick="editUser()">编辑用户</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除用户</a>
 </div>
 
-
-<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
-     closed="true" buttons="#dlg-buttons">
-    <div class="ftitle">User Information</div>
-    <form id="fm" method="post">
-        <div class="fitem">
-            <label>客户ID:</label>
-            <input name="customerid" class="easyui-validatebox" required="true">
-        </div>
-        <div class="fitem">
-            <label>公司名:</label>
-            <input name="companyname" class="easyui-validatebox" required="true">
-        </div>
-        <div class="fitem">
-            <label>联系人名:</label>
-            <input name="contactname">
-        </div>
-        <div class="fitem">
-            <label>国家:</label>
-            <input name="country" class="easyui-validatebox">
-        </div>
-    </form>
-</div>
-<div id="dlg-buttons">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">Save</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel"
-       onclick="javascript:$('#dlg').dialog('close')">Cancel</a>
-</div>
 
 
 </body>

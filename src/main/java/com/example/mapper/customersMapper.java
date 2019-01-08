@@ -30,4 +30,5 @@ public interface customersMapper {
 
     List<customers> selectAll();
 
+    List<customers> selectAllOrID(String customerid, String companyname);
 }
