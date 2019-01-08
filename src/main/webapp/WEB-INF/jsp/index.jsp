@@ -14,8 +14,6 @@
     <title>Insert title here</title>
 </head>
 <body>
-<h2>customers DataGrid</h2>
-<div style="margin:20px 0;"></div>
 <script type="text/javascript">
   var url;
 
@@ -61,7 +59,7 @@
 
 </script>
 
-<table id="dg" class="easyui-datagrid" title="Customers DataGrid" style="width:1366px;height:459px;"
+<table id="dg" class="easyui-datagrid" title="Customers DataGrid" style="width:100%;height:auto"
        data-options="
        pagination:true,
        singleSelect:true,

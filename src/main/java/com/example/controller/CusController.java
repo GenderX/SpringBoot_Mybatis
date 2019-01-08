@@ -69,4 +69,9 @@ public class CusController {
         return map;
     }
 
+    @RequestMapping("/index")
+    public String index(){
+        return  "hello";
+    }
+
 }
