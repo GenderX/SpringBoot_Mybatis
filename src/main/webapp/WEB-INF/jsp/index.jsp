@@ -25,6 +25,15 @@
     $('#fm').form('clear');
     url = '/customer/insertCus';
   }
+  function  editUser() {
+    var row = $('#dg').datagrid('getSelected');
+    if (row){
+      $('#dlg').dialog('open').dialog('setTitle','Edit User');
+      $('#fm').form('load',row);
+      url = '/customer/updateCustomer?id='+row.customerid;
+    }
+
+  }
 
   function saveUser() {
     $('#fm').form('submit', {
@@ -36,6 +45,7 @@
         var result = eval('('+result+')');
         if (result.errorMsg){
           $('#dlg').dialog('close');
+          $('#dg').datagrid('reload');
           $.messager.show({
             title: 'Error',
             msg: result.errorMsg

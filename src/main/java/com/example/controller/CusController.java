@@ -30,7 +30,6 @@ public class CusController {
     @RequestMapping("/{id}")
   public customers select(@PathVariable String id){
         customers customers = customersMapper.selectByPrimaryKey(id);
-        //   customers customers = cusDao.slectById(id);
         return customers;
     }
     @RequestMapping("/hello")
