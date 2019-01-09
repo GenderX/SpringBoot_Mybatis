@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.mapper.customersMapper;
 import com.example.model.customers;
+import com.example.model.customersExample;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class CusController {
     public Object getAllCus(int page, int rows, String customerid, String companyname) {
         Page<customers> rowpage = PageHelper.startPage(page, rows);
         //  List<customers> customers = customersMapper.selectAll();
-        List<customers> customers = customersMapper.selectAllOrID(customerid, companyname);
+       List<customers> customers = customersMapper.selectAllOrID(customerid, companyname);
         HashMap<String, Object> data = new HashMap<>();
         data.put("rows", customers);
         data.put("total", rowpage.getTotal());

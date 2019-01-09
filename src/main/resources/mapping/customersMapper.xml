@@ -222,7 +222,7 @@
                 customerID=#{customerid}
             </if>
             <if test="companyname!=null and companyname!=''">
-                and CompanyName=#{companyname}
+                and CompanyName like "%"#{companyname}"%"
             </if>
         </where>
     </select>
