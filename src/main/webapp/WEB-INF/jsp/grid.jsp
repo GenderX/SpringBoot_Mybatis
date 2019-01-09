@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/easyui/themes/metro/easyui.css">
 <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
 <script type="text/javascript" src="/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
@@ -17,8 +17,8 @@
 <script type="text/javascript">
   var url;
 
-  function doSearch(){
-    $('#dg').datagrid('load',{
+  function doSearch() {
+    $('#dg').datagrid('load', {
       customerid: $('#customerid').val(),
       companyname: $('#companyname').val()
     });
@@ -30,12 +30,13 @@
     $('#fm').form('clear');
     url = '/customer/insertCus';
   }
-  function  editUser() {
+
+  function editUser() {
     var row = $('#dg').datagrid('getSelected');
-    if (row){
-      $('#dlg').dialog('open').dialog('setTitle','Edit User');
-      $('#fm').form('load',row);
-      url = '/customer/updateCustomer?id='+row.customerid;
+    if (row) {
+      $('#dlg').dialog('open').dialog('setTitle', 'Edit User');
+      $('#fm').form('load', row);
+      url = '/customer/updateCustomer?id=' + row.customerid;
     }
   }
 
@@ -45,9 +46,9 @@
       onSubmit: function () {
         return $(this).form('validate');
       },
-      success: function(result){
-        var result = eval('('+result+')');
-        if (result.errorMsg){
+      success: function (result) {
+        var result = eval('(' + result + ')');
+        if (result.errorMsg) {
           $('#dlg').dialog('close');
           $('#dg').datagrid('reload');
           $.messager.alert({
@@ -106,31 +107,26 @@
     <a href="#" class="easyui-linkbutton" plain="false" onclick="doSearch()">Search</a>
 </div>
 
-
-<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
-     closed="true" buttons="#dlg-buttons">
-    <div class="ftitle">User Information</div>
-    <form id="fm" method="post">
-        <div class="fitem">
-            <label>客户ID:</label>
-            <input name="customerid" class="easyui-validatebox" required="true">
+<div id="dlg" class="easyui-dialog" style="width:400px"
+     data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
+    <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
+        <h3>Insert Customer</h3>
+        <div style="margin-bottom:10px">
+            <input name="customerid" class="easyui-textbox" required="true" label="客户ID:" style="width:100%">
         </div>
-        <div class="fitem">
-            <label>公司名:</label>
-            <input name="companyname" class="easyui-validatebox" required="true">
+        <div style="margin-bottom:10px">
+            <input name="companyname" class="easyui-textbox" required="true" label="公司名:" style="width:100%">
         </div>
-        <div class="fitem">
-            <label>联系人名:</label>
-            <input name="contactname">
+        <div style="margin-bottom:10px">
+            <input name="contactname" class="easyui-textbox" label="联系人名:" style="width:100%">
         </div>
-        <div class="fitem">
-            <label>国家:</label>
-            <input name="country" class="easyui-validatebox">
+        <div style="margin-bottom:10px">
+            <input name="country" class="easyui-textbox" label="国家:" style="width:100%">
         </div>
     </form>
 </div>
 <div id="dlg-buttons">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">Save</a>
+    <a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()">Save</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel"
        onclick="javascript:$('#dlg').dialog('close')">Cancel</a>
 </div>
