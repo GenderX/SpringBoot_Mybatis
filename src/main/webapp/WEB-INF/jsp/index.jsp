@@ -16,6 +16,7 @@
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
+    //加载标签到center
   function openTab(text, url, iconCls) {
     if($("#tabs").tabs("exists", text)) {
       //如果已经存在，则使之处于选中的状态
@@ -32,18 +33,35 @@
     }
   }
 
+
 </script>
 <body>
 <div id="cc" class="easyui-layout"   style="width:1690px;height:800px;">
     <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
     <div data-options="region:'west',title:'菜单',split:true," style="width:200px;">
-        <ul>
-            <li><a href="javascript:openTab('添加','/page/grid','icon-add')">菜单1</a></li>
-            <li><a href="#">菜单2</a></li>
-            <li><a href="#">菜单3</a></li>
-            <li><a href="#">菜单4</a></li>
-            <li><a href="#">菜单5</a></li>
-        </ul>
+
+         <ul id="tt" class="easyui-tree">
+             <li>
+                 <span>Folder</span>
+                 <ul>
+                     <li>
+                         <span>Sub Folder 1</span>
+                         <ul>
+                             <li><span><a href="javascript:openTab('CURD Customers','/page/grid','icon-man')">Customer GRID</a></span></li>
+                             <li><span>File 12</span></li>
+                             <li><span>File 13</span></li>
+                         </ul>
+                     </li>
+                     <li><span>File 2</span></li>
+                     <li><span>File 3</span></li>
+                 </ul>
+             </li>
+             <li><span>File21</span></li>
+         </ul>
+
+  <%--      <div style="width:200px;height:auto;border:1px solid #ccc;">
+            <ul id="tt" class="easyui-tree" url="/static/tree_data.json" method="get"></ul>
+        </div>--%>
     </div>
     <div region="center">
         <div class="easyui-tabs" fit="true" border="false" id="tabs">

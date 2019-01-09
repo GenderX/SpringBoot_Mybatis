@@ -24,17 +24,19 @@ public class CusController {
     @Autowired
     customersMapper customersMapper;
 
+    @RequestMapping("updateCustomer")
     @ResponseBody
-    @RequestMapping("/{id}")
-    public customers select(@PathVariable String id) {
-        customers customers = customersMapper.selectByPrimaryKey(id);
-        return customers;
+    public Object updateCustomer(customers customers) {
+        HashMap<String, Object> map = new HashMap<>();
+        int i = customersMapper.updateByPrimaryKeySelective(customers);
+        if (i==0){
+            String errorMes="更新失败";
+            map.put("errorMsg", errorMes);
+        }
+        map.put("success", true);
+        return map;
     }
 
-/*    @RequestMapping("/hello")
-    public String hello() {
-        return "index";
-    }*/
 
     @GetMapping("getAll")
     @ResponseBody

@@ -37,7 +37,6 @@
       $('#fm').form('load',row);
       url = '/customer/updateCustomer?id='+row.customerid;
     }
-
   }
 
   function saveUser() {
@@ -51,7 +50,7 @@
         if (result.errorMsg){
           $('#dlg').dialog('close');
           $('#dg').datagrid('reload');
-          $.messager.show({
+          $.messager.alert({
             title: 'Error',
             msg: result.errorMsg
           });
