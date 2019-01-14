@@ -58,5 +58,7 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+upload:
+    filePath: F:\test\
 
 
