@@ -8,6 +8,7 @@ spring:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
 
+
   datasource:
     name: mysql_test
     type: com.alibaba.druid.pool.DruidDataSource
@@ -60,5 +61,9 @@ pagehelper:
   params: count=countSql
 upload:
     filePath: F:\test\
+multipart:
+    maxFileSize: 100Mb
+    maxRequestSize: 100Mb
+
 
 
