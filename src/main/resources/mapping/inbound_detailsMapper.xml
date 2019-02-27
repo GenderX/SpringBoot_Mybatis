@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wms.mapper.inbound_detailsMapper" >
+  <resultMap id="BaseResultMap" type="com.wms.model.inbound_details" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="InStockNumber" property="instocknumber" jdbcType="CHAR" />
+    <result column="ProductNumber" property="productnumber" jdbcType="CHAR" />
+    <result column="Amount" property="amount" jdbcType="REAL" />
+    <result column="StoreHouseNumber" property="storehousenumber" jdbcType="INTEGER" />
+    <result column="CompleteTime" property="completetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, InStockNumber, ProductNumber, Amount, StoreHouseNumber, CompleteTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from inbound_details
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from inbound_details
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wms.model.inbound_details" >
+    insert into inbound_details (ID, InStockNumber, ProductNumber, 
+      Amount, StoreHouseNumber, CompleteTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{instocknumber,jdbcType=CHAR}, #{productnumber,jdbcType=CHAR}, 
+      #{amount,jdbcType=REAL}, #{storehousenumber,jdbcType=INTEGER}, #{completetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wms.model.inbound_details" >
+    insert into inbound_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="instocknumber != null" >
+        InStockNumber,
+      </if>
+      <if test="productnumber != null" >
+        ProductNumber,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="storehousenumber != null" >
+        StoreHouseNumber,
+      </if>
+      <if test="completetime != null" >
+        CompleteTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="instocknumber != null" >
+        #{instocknumber,jdbcType=CHAR},
+      </if>
+      <if test="productnumber != null" >
+        #{productnumber,jdbcType=CHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=REAL},
+      </if>
+      <if test="storehousenumber != null" >
+        #{storehousenumber,jdbcType=INTEGER},
+      </if>
+      <if test="completetime != null" >
+        #{completetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wms.model.inbound_details" >
+    update inbound_details
+    <set >
+      <if test="instocknumber != null" >
+        InStockNumber = #{instocknumber,jdbcType=CHAR},
+      </if>
+      <if test="productnumber != null" >
+        ProductNumber = #{productnumber,jdbcType=CHAR},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=REAL},
+      </if>
+      <if test="storehousenumber != null" >
+        StoreHouseNumber = #{storehousenumber,jdbcType=INTEGER},
+      </if>
+      <if test="completetime != null" >
+        CompleteTime = #{completetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wms.model.inbound_details" >
+    update inbound_details
+    set InStockNumber = #{instocknumber,jdbcType=CHAR},
+      ProductNumber = #{productnumber,jdbcType=CHAR},
+      Amount = #{amount,jdbcType=REAL},
+      StoreHouseNumber = #{storehousenumber,jdbcType=INTEGER},
+      CompleteTime = #{completetime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

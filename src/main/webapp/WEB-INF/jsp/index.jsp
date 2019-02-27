@@ -36,7 +36,7 @@
 
 </script>
 <body>
-<div id="cc" class="easyui-layout"   style="width:1690px;height:800px;">
+<div id="cc" class="easyui-layout"   style="width:1800px;height:850px;">
     <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
     <div data-options="region:'west',title:'菜单',split:true," style="width:200px;">
 
@@ -47,7 +47,7 @@
                      <li>
                          <span>Sub Folder 1</span>
                          <ul>
-                             <li><span><a href="javascript:openTab('CURD Customers','/page/grid','icon-man')">Customer GRID</a></span></li>
+                             <li><span><a href="javascript:openTab('客户管理','/page/CustomerGrid','icon-man')">客户管理</a></span></li>
                              <li><span>File 12</span></li>
                              <li><span>File 13</span></li>
                          </ul>

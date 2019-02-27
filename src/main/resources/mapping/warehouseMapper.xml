@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wms.mapper.warehouseMapper" >
+  <resultMap id="BaseResultMap" type="com.wms.model.warehouse" >
+    <id column="Number" property="number" jdbcType="INTEGER" />
+    <result column="Admin" property="admin" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Number, Admin, name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from warehouse
+    where Number = #{number,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from warehouse
+    where Number = #{number,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wms.model.warehouse" >
+    insert into warehouse (Number, Admin, name
+      )
+    values (#{number,jdbcType=INTEGER}, #{admin,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wms.model.warehouse" >
+    insert into warehouse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        Number,
+      </if>
+      <if test="admin != null" >
+        Admin,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="admin != null" >
+        #{admin,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wms.model.warehouse" >
+    update warehouse
+    <set >
+      <if test="admin != null" >
+        Admin = #{admin,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Number = #{number,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wms.model.warehouse" >
+    update warehouse
+    set Admin = #{admin,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR}
+    where Number = #{number,jdbcType=INTEGER}
+  </update>
+</mapper>

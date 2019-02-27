@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wms.mapper.supplierMapper" >
+  <resultMap id="BaseResultMap" type="com.wms.model.supplier" >
+    <id column="Number" property="number" jdbcType="CHAR" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Contact" property="contact" jdbcType="VARCHAR" />
+    <result column="Address" property="address" jdbcType="VARCHAR" />
+    <result column="Postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="Phone" property="phone" jdbcType="VARCHAR" />
+    <result column="Fax" property="fax" jdbcType="VARCHAR" />
+    <result column="Bank" property="bank" jdbcType="VARCHAR" />
+    <result column="Account" property="account" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Number, Name, Contact, Address, Postcode, Phone, Fax, Bank, Account
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where Number = #{number,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from supplier
+    where Number = #{number,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wms.model.supplier" >
+    insert into supplier (Number, Name, Contact, 
+      Address, Postcode, Phone, 
+      Fax, Bank, Account)
+    values (#{number,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wms.model.supplier" >
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        Number,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="contact != null" >
+        Contact,
+      </if>
+      <if test="address != null" >
+        Address,
+      </if>
+      <if test="postcode != null" >
+        Postcode,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="fax != null" >
+        Fax,
+      </if>
+      <if test="bank != null" >
+        Bank,
+      </if>
+      <if test="account != null" >
+        Account,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        #{number,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wms.model.supplier" >
+    update supplier
+    <set >
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        Contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        Address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        Postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        Fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        Bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        Account = #{account,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Number = #{number,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wms.model.supplier" >
+    update supplier
+    set Name = #{name,jdbcType=VARCHAR},
+      Contact = #{contact,jdbcType=VARCHAR},
+      Address = #{address,jdbcType=VARCHAR},
+      Postcode = #{postcode,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Fax = #{fax,jdbcType=VARCHAR},
+      Bank = #{bank,jdbcType=VARCHAR},
+      Account = #{account,jdbcType=VARCHAR}
+    where Number = #{number,jdbcType=CHAR}
+  </update>
+</mapper>

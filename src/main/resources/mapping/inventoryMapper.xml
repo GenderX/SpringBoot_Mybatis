@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wms.mapper.inventoryMapper" >
+  <resultMap id="BaseResultMap" type="com.wms.model.inventory" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="StoreHouseNumber" property="storehousenumber" jdbcType="INTEGER" />
+    <result column="ProductNumber" property="productnumber" jdbcType="VARCHAR" />
+    <result column="Amount" property="amount" jdbcType="REAL" />
+    <result column="AreaNumber" property="areanumber" jdbcType="INTEGER" />
+    <result column="ShelfNumber" property="shelfnumber" jdbcType="INTEGER" />
+    <result column="PlaceNumber" property="placenumber" jdbcType="INTEGER" />
+    <result column="InStockTime" property="instocktime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, StoreHouseNumber, ProductNumber, Amount, AreaNumber, ShelfNumber, PlaceNumber, 
+    InStockTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from inventory
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from inventory
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wms.model.inventory" >
+    insert into inventory (ID, StoreHouseNumber, ProductNumber, 
+      Amount, AreaNumber, ShelfNumber, 
+      PlaceNumber, InStockTime)
+    values (#{id,jdbcType=INTEGER}, #{storehousenumber,jdbcType=INTEGER}, #{productnumber,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=REAL}, #{areanumber,jdbcType=INTEGER}, #{shelfnumber,jdbcType=INTEGER}, 
+      #{placenumber,jdbcType=INTEGER}, #{instocktime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wms.model.inventory" >
+    insert into inventory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="storehousenumber != null" >
+        StoreHouseNumber,
+      </if>
+      <if test="productnumber != null" >
+        ProductNumber,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="areanumber != null" >
+        AreaNumber,
+      </if>
+      <if test="shelfnumber != null" >
+        ShelfNumber,
+      </if>
+      <if test="placenumber != null" >
+        PlaceNumber,
+      </if>
+      <if test="instocktime != null" >
+        InStockTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="storehousenumber != null" >
+        #{storehousenumber,jdbcType=INTEGER},
+      </if>
+      <if test="productnumber != null" >
+        #{productnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=REAL},
+      </if>
+      <if test="areanumber != null" >
+        #{areanumber,jdbcType=INTEGER},
+      </if>
+      <if test="shelfnumber != null" >
+        #{shelfnumber,jdbcType=INTEGER},
+      </if>
+      <if test="placenumber != null" >
+        #{placenumber,jdbcType=INTEGER},
+      </if>
+      <if test="instocktime != null" >
+        #{instocktime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wms.model.inventory" >
+    update inventory
+    <set >
+      <if test="storehousenumber != null" >
+        StoreHouseNumber = #{storehousenumber,jdbcType=INTEGER},
+      </if>
+      <if test="productnumber != null" >
+        ProductNumber = #{productnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=REAL},
+      </if>
+      <if test="areanumber != null" >
+        AreaNumber = #{areanumber,jdbcType=INTEGER},
+      </if>
+      <if test="shelfnumber != null" >
+        ShelfNumber = #{shelfnumber,jdbcType=INTEGER},
+      </if>
+      <if test="placenumber != null" >
+        PlaceNumber = #{placenumber,jdbcType=INTEGER},
+      </if>
+      <if test="instocktime != null" >
+        InStockTime = #{instocktime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wms.model.inventory" >
+    update inventory
+    set StoreHouseNumber = #{storehousenumber,jdbcType=INTEGER},
+      ProductNumber = #{productnumber,jdbcType=VARCHAR},
+      Amount = #{amount,jdbcType=REAL},
+      AreaNumber = #{areanumber,jdbcType=INTEGER},
+      ShelfNumber = #{shelfnumber,jdbcType=INTEGER},
+      PlaceNumber = #{placenumber,jdbcType=INTEGER},
+      InStockTime = #{instocktime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

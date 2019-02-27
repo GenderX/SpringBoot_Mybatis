@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wms.mapper.outbound_masterMapper" >
+  <resultMap id="BaseResultMap" type="com.wms.model.outbound_master" >
+    <id column="Number" property="number" jdbcType="CHAR" />
+    <result column="CustomerNumber" property="customernumber" jdbcType="CHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="CompleteTime" property="completetime" jdbcType="TIMESTAMP" />
+    <result column="Approver" property="approver" jdbcType="VARCHAR" />
+    <result column="Sender" property="sender" jdbcType="VARCHAR" />
+    <result column="Recipient" property="recipient" jdbcType="VARCHAR" />
+    <result column="isFinish" property="isfinish" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Number, CustomerNumber, CreateTime, CompleteTime, Approver, Sender, Recipient, isFinish
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from outbound_master
+    where Number = #{number,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from outbound_master
+    where Number = #{number,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wms.model.outbound_master" >
+    insert into outbound_master (Number, CustomerNumber, CreateTime, 
+      CompleteTime, Approver, Sender, 
+      Recipient, isFinish)
+    values (#{number,jdbcType=CHAR}, #{customernumber,jdbcType=CHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{completetime,jdbcType=TIMESTAMP}, #{approver,jdbcType=VARCHAR}, #{sender,jdbcType=VARCHAR}, 
+      #{recipient,jdbcType=VARCHAR}, #{isfinish,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wms.model.outbound_master" >
+    insert into outbound_master
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        Number,
+      </if>
+      <if test="customernumber != null" >
+        CustomerNumber,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="completetime != null" >
+        CompleteTime,
+      </if>
+      <if test="approver != null" >
+        Approver,
+      </if>
+      <if test="sender != null" >
+        Sender,
+      </if>
+      <if test="recipient != null" >
+        Recipient,
+      </if>
+      <if test="isfinish != null" >
+        isFinish,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        #{number,jdbcType=CHAR},
+      </if>
+      <if test="customernumber != null" >
+        #{customernumber,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completetime != null" >
+        #{completetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approver != null" >
+        #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="sender != null" >
+        #{sender,jdbcType=VARCHAR},
+      </if>
+      <if test="recipient != null" >
+        #{recipient,jdbcType=VARCHAR},
+      </if>
+      <if test="isfinish != null" >
+        #{isfinish,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wms.model.outbound_master" >
+    update outbound_master
+    <set >
+      <if test="customernumber != null" >
+        CustomerNumber = #{customernumber,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completetime != null" >
+        CompleteTime = #{completetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approver != null" >
+        Approver = #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="sender != null" >
+        Sender = #{sender,jdbcType=VARCHAR},
+      </if>
+      <if test="recipient != null" >
+        Recipient = #{recipient,jdbcType=VARCHAR},
+      </if>
+      <if test="isfinish != null" >
+        isFinish = #{isfinish,jdbcType=BIT},
+      </if>
+    </set>
+    where Number = #{number,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wms.model.outbound_master" >
+    update outbound_master
+    set CustomerNumber = #{customernumber,jdbcType=CHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CompleteTime = #{completetime,jdbcType=TIMESTAMP},
+      Approver = #{approver,jdbcType=VARCHAR},
+      Sender = #{sender,jdbcType=VARCHAR},
+      Recipient = #{recipient,jdbcType=VARCHAR},
+      isFinish = #{isfinish,jdbcType=BIT}
+    where Number = #{number,jdbcType=CHAR}
+  </update>
+</mapper>

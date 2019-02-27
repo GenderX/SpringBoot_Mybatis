@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wms.mapper.productMapper" >
+  <resultMap id="BaseResultMap" type="com.wms.model.product" >
+    <id column="Number" property="number" jdbcType="VARCHAR" />
+    <result column="CategoryNumber" property="categorynumber" jdbcType="INTEGER" />
+    <result column="Barcode" property="barcode" jdbcType="VARCHAR" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Spec" property="spec" jdbcType="VARCHAR" />
+    <result column="Price" property="price" jdbcType="DECIMAL" />
+    <result column="Unit" property="unit" jdbcType="VARCHAR" />
+    <result column="rowguid" property="rowguid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Number, CategoryNumber, Barcode, Name, Spec, Price, Unit, rowguid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where Number = #{number,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from product
+    where Number = #{number,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wms.model.product" >
+    insert into product (Number, CategoryNumber, Barcode, 
+      Name, Spec, Price, 
+      Unit, rowguid)
+    values (#{number,jdbcType=VARCHAR}, #{categorynumber,jdbcType=INTEGER}, #{barcode,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{spec,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{unit,jdbcType=VARCHAR}, #{rowguid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wms.model.product" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        Number,
+      </if>
+      <if test="categorynumber != null" >
+        CategoryNumber,
+      </if>
+      <if test="barcode != null" >
+        Barcode,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="spec != null" >
+        Spec,
+      </if>
+      <if test="price != null" >
+        Price,
+      </if>
+      <if test="unit != null" >
+        Unit,
+      </if>
+      <if test="rowguid != null" >
+        rowguid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="categorynumber != null" >
+        #{categorynumber,jdbcType=INTEGER},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="spec != null" >
+        #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="rowguid != null" >
+        #{rowguid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wms.model.product" >
+    update product
+    <set >
+      <if test="categorynumber != null" >
+        CategoryNumber = #{categorynumber,jdbcType=INTEGER},
+      </if>
+      <if test="barcode != null" >
+        Barcode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="spec != null" >
+        Spec = #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        Price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="unit != null" >
+        Unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="rowguid != null" >
+        rowguid = #{rowguid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Number = #{number,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wms.model.product" >
+    update product
+    set CategoryNumber = #{categorynumber,jdbcType=INTEGER},
+      Barcode = #{barcode,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      Spec = #{spec,jdbcType=VARCHAR},
+      Price = #{price,jdbcType=DECIMAL},
+      Unit = #{unit,jdbcType=VARCHAR},
+      rowguid = #{rowguid,jdbcType=VARCHAR}
+    where Number = #{number,jdbcType=VARCHAR}
+  </update>
+</mapper>

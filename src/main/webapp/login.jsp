@@ -37,12 +37,12 @@
         </div>
         <form action="<%=request.getContextPath()%>/user/login" method="post">
             <li>
-                <input name="employeeid" type="text" class="text" value="Username" onfocus="this.value = '';"
+                <input name="UserName" type="text" class="text" value="UserName" onfocus="this.value = '';"
                        onblur="if (this.value == '') {this.value = 'Username';}"><a href="#" class=" icon user"></a>
             </li>
             <div class="clear"></div>
             <li>
-                <input name="password" type="password" value="Password" onfocus="this.value = '';"
+                <input name="password" type="password" value="password" onfocus="this.value = '';"
                        onblur="if (this.value == '') {this.value = 'Password';}"> <a href="#" class="icon lock"></a>
             </li>
             <div class="clear"></div>
@@ -59,6 +59,8 @@
 <div class="clear"></div>
 <!--- footer --->
 <div class="footer">
+    <p>Copyright &copy; 2014.</p>
+    <p>Copyright &copy; 2014.</p>
     <p>Copyright &copy; 2014.</p>
 </div>
 

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wms.mapper.product_categoryMapper" >
+  <resultMap id="BaseResultMap" type="com.wms.model.product_category" >
+    <id column="Number" property="number" jdbcType="INTEGER" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="rowguid" property="rowguid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Number, Name, rowguid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_category
+    where Number = #{number,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product_category
+    where Number = #{number,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wms.model.product_category" >
+    insert into product_category (Number, Name, rowguid
+      )
+    values (#{number,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{rowguid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wms.model.product_category" >
+    insert into product_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        Number,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="rowguid != null" >
+        rowguid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="rowguid != null" >
+        #{rowguid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wms.model.product_category" >
+    update product_category
+    <set >
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="rowguid != null" >
+        rowguid = #{rowguid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Number = #{number,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wms.model.product_category" >
+    update product_category
+    set Name = #{name,jdbcType=VARCHAR},
+      rowguid = #{rowguid,jdbcType=VARCHAR}
+    where Number = #{number,jdbcType=INTEGER}
+  </update>
+</mapper>
