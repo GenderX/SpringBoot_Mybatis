@@ -1,33 +1,23 @@
 package com.wms.model;
 
 public class staff_type {
-    private String number;
+    private Integer number;
 
-    private String name;
+    private String type;
 
-    private Integer typenumber;
-
-    public String getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
-        this.number = number == null ? null : number.trim();
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public Integer getTypenumber() {
-        return typenumber;
-    }
-
-    public void setTypenumber(Integer typenumber) {
-        this.typenumber = typenumber;
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 }

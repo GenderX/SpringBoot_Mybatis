@@ -31,6 +31,8 @@ public class PageController {
     }
 
 
+
+
     @RequestMapping(value = "{pageName1}", method = RequestMethod.GET)
     public ModelAndView toPage(@PathVariable("pageName1") String pageName1) {
         ModelAndView mv = new ModelAndView(pageName1);

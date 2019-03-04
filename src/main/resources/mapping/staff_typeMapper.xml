@@ -2,70 +2,60 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wms.mapper.staff_typeMapper" >
   <resultMap id="BaseResultMap" type="com.wms.model.staff_type" >
-    <id column="Number" property="number" jdbcType="CHAR" />
-    <result column="Name" property="name" jdbcType="VARCHAR" />
-    <result column="TypeNumber" property="typenumber" jdbcType="INTEGER" />
+    <id column="Number" property="number" jdbcType="INTEGER" />
+    <result column="Type" property="type" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    Number, Name, TypeNumber
+    Number, Type
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from staff
-    where Number = #{number,jdbcType=CHAR}
+    from staff_type
+    where Number = #{number,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from staff
-    where Number = #{number,jdbcType=CHAR}
+    <select id="selectAll" resultType="com.wms.model.staff_type">
+select * from staff_type;
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from staff_type
+    where Number = #{number,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.wms.model.staff_type" >
-    insert into staff (Number, Name, TypeNumber
-      )
-    values (#{number,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{typenumber,jdbcType=INTEGER}
-      )
+    insert into staff_type (Number, Type)
+    values (#{number,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.wms.model.staff_type" >
-    insert into staff
+    insert into staff_type
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="number != null" >
         Number,
       </if>
-      <if test="name != null" >
-        Name,
-      </if>
-      <if test="typenumber != null" >
-        TypeNumber,
+      <if test="type != null" >
+        Type,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="number != null" >
-        #{number,jdbcType=CHAR},
+        #{number,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="typenumber != null" >
-        #{typenumber,jdbcType=INTEGER},
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.wms.model.staff_type" >
-    update staff
+    update staff_type
     <set >
-      <if test="name != null" >
-        Name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="typenumber != null" >
-        TypeNumber = #{typenumber,jdbcType=INTEGER},
+      <if test="type != null" >
+        Type = #{type,jdbcType=VARCHAR},
       </if>
     </set>
-    where Number = #{number,jdbcType=CHAR}
+    where Number = #{number,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.wms.model.staff_type" >
-    update staff
-    set Name = #{name,jdbcType=VARCHAR},
-      TypeNumber = #{typenumber,jdbcType=INTEGER}
-    where Number = #{number,jdbcType=CHAR}
+    update staff_type
+    set Type = #{type,jdbcType=VARCHAR}
+    where Number = #{number,jdbcType=INTEGER}
   </update>
 </mapper>

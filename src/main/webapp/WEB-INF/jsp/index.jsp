@@ -45,11 +45,11 @@
                  <span>Folder</span>
                  <ul>
                      <li>
-                         <span>Sub Folder 1</span>
+                         <span>人员管理</span>
                          <ul>
                              <li><span><a href="javascript:openTab('客户管理','/page/CustomerGrid','icon-man')">客户管理</a></span></li>
-                             <li><span>File 12</span></li>
-                             <li><span>File 13</span></li>
+                            <li><span><a href="javascript:openTab('供应商管理','/page/CustomerGrid','icon-man')">供应商管理</a></span></li>
+                            <li><span><a href="javascript:openTab('员工管理','/page/StaffGrid','icon-man')">员工管理</a></span></li>
                          </ul>
                      </li>
                      <li><span>File 2</span></li>
