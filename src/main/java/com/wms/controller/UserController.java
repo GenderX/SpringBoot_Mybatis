@@ -5,6 +5,7 @@ import com.wms.model.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  * @version: $version$
  */
 @Controller
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     userMapper userMapper;
@@ -32,4 +34,48 @@ public class UserController {
          return "login";
      }
 
+    @RequestMapping("/selectByPrimaryKey")
+    @ResponseBody
+    public user selectByPrimaryKey(String username) {
+        user data = userMapper.selectByPrimaryKey(username);
+        return data;
+    }
+
+    @RequestMapping("/insert")
+    @ResponseBody
+    public int insert(user record){
+        int data = userMapper.insert(record);
+        return data;
+    }
+
+    @RequestMapping("/insertSelective")
+    @ResponseBody
+    public int insertSelective(user record){
+        int data = userMapper.insertSelective(record);
+        return data;
+    }
+
+    @RequestMapping("/updateByPrimaryKeySelective")
+    @ResponseBody
+    public int updateByPrimaryKeySelective(user record){
+        int data = userMapper.updateByPrimaryKeySelective(record);
+
+        return data;
+    }
+
+    @RequestMapping("/updateByPrimaryKey")
+    @ResponseBody
+    public int updateByPrimaryKey(user record){
+        int data = userMapper.updateByPrimaryKey(record);
+
+        return data;
+    }
+
+    @RequestMapping("/deleteByPrimaryKey")
+    @ResponseBody
+    public int deleteByPrimaryKey(String username) {
+        int data = userMapper.deleteByPrimaryKey(username);
+
+        return data;
+    }
 }
