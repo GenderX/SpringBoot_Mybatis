@@ -50,6 +50,7 @@
                              <li><span><a href="javascript:openTab('客户管理','/page/CustomerGrid','icon-man')">客户管理</a></span></li>
                             <li><span><a href="javascript:openTab('供应商管理','/page/CustomerGrid','icon-man')">供应商管理</a></span></li>
                             <li><span><a href="javascript:openTab('员工管理','/page/StaffGrid','icon-man')">员工管理</a></span></li>
+                             <li><span><a href="javascript:openTab('用户管理','/page/userGrid','icon-man')">用户管理</a></span></li>
                          </ul>
                      </li>
                      <li><span>File 2</span></li>
