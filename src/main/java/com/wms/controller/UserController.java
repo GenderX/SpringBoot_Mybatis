@@ -1,5 +1,7 @@
 package com.wms.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.wms.mapper.userMapper;
 import com.wms.model.user;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author ：LiCan
@@ -34,10 +37,11 @@ public class UserController {
          return "login";
      }
 
-    @RequestMapping("/selectByPrimaryKey")
+    @RequestMapping("/selectAll")
     @ResponseBody
-    public user selectByPrimaryKey(String username) {
-        user data = userMapper.selectByPrimaryKey(username);
+    public Object selectByPrimaryKey(String username,int page, int rows) {
+        Page<user> rowpage = PageHelper.startPage(page, rows);
+        List<user> data = userMapper.selectAllOrByParams(username);
         return data;
     }
 

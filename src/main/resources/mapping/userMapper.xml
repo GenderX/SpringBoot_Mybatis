@@ -55,4 +55,12 @@
     set Password = #{password,jdbcType=VARCHAR}
     where UserName = #{username,jdbcType=VARCHAR}
   </update>
+  <select id="selectAllOrByParams" resultType="com.wms.model.user">
+    select * from user
+    <where>
+      <if test="username != null and username!=''">
+        UserName like #{username}
+      </if>
+    </where>
+  </select>
 </mapper>

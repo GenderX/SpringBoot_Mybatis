@@ -114,7 +114,7 @@
     <tr>
         <th data-options="field:'number',width:80">员工编号</th>
         <th data-options="field:'name',width:180">员工名</th>
-        <th data-options="field:'typenumber',width:180,hidden:true",>员工类型编号</th>
+        <th data-options="field:'typenumber',width:180,hidden:true">员工类型编号</th>
         <th data-options="field:'type',width:180">员工类型</th>
 
 
@@ -145,7 +145,7 @@
             <input name="name" class="easyui-textbox" required="true" label="姓名:" style="width:100%">
         </div>
         <div style="margin-bottom:10px">
-            <input label="职位：" id="typeNumber" name="typeNumber" class="easyui-combobox" data-options="
+            <input label="职位：" id="typenumber" name="typenumber" class="easyui-combobox" data-options="
          valueField: 'number', textField: 'type',
          url: '/staff/getTypeName'"/>
         </div>

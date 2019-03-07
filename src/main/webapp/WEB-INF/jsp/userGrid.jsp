@@ -32,7 +32,6 @@
     function doSearch() {
         $('#dg').datagrid('load', {
             username: $('#username').val(),
-            password: $('#password').val()
         });
     }
 
@@ -105,7 +104,7 @@
        pagination:true,
        singleSelect:true,
        collapsible:true,
-       url:'/user/selectByPrimaryKey',
+       url:'/user/selectAll',
        method:'get',
        striped:true,
        toolbar:'#toolbar' "
@@ -113,7 +112,7 @@
     <thead>
 
     <tr>
-        <th data-options="field:'usernumber',width:80">用户编号</th>
+        <th data-options="field:'username',width:80">用户名</th>
         <th data-options="field:'password',width:180">用户密码</th>
 
 
