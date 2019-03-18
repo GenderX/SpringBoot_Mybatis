@@ -7,7 +7,6 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -77,7 +76,7 @@ public class CusController {
     @RequestMapping("/deleteCustomer")
     @ResponseBody
     public Object deleteCustomer(String number){
-        int i = customerService.deleteCustomer(number);
+        customerService.deleteCustomer(number);
         HashMap<String, Object> result = new HashMap<>();
         result.put("success",true);
         return result;

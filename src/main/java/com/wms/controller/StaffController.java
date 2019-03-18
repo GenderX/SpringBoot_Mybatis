@@ -1,6 +1,5 @@
 package com.wms.controller;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.wms.model.staff;
 import com.wms.model.staffVO;
@@ -30,7 +29,7 @@ public class StaffController {
     @RequestMapping("/getAll")
     @ResponseBody
     public Object getAllStaff(int page, int rows, String Number, String Name) {
-        Page<staffVO> rowpage = PageHelper.startPage(page, rows);
+        PageHelper.startPage(page, rows);
         List<staffVO> staff = staffService.selectAllOrID(Name, Number);
         return staff;
     }

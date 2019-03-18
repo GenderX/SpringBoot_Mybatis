@@ -5,9 +5,11 @@
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="OutStockNumber" property="outstocknumber" jdbcType="CHAR" />
     <result column="ProductNumber" property="productnumber" jdbcType="INTEGER" />
+    <result column="Amount" property="amount" jdbcType="INTEGER" />
+    <result column="PlaceNumber" property="placenumber" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, OutStockNumber, ProductNumber
+    ID, OutStockNumber, ProductNumber, Amount, PlaceNumber
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,10 +22,10 @@
     where ID = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.wms.model.outbound_details" >
-    insert into outbound_details (ID, OutStockNumber, ProductNumber
-      )
-    values (#{id,jdbcType=INTEGER}, #{outstocknumber,jdbcType=CHAR}, #{productnumber,jdbcType=INTEGER}
-      )
+    insert into outbound_details (ID, OutStockNumber, ProductNumber, 
+      Amount, PlaceNumber)
+    values (#{id,jdbcType=INTEGER}, #{outstocknumber,jdbcType=CHAR}, #{productnumber,jdbcType=INTEGER}, 
+      #{amount,jdbcType=INTEGER}, #{placenumber,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.wms.model.outbound_details" >
     insert into outbound_details
@@ -37,6 +39,12 @@
       <if test="productnumber != null" >
         ProductNumber,
       </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="placenumber != null" >
+        PlaceNumber,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -47,6 +55,12 @@
       </if>
       <if test="productnumber != null" >
         #{productnumber,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="placenumber != null" >
+        #{placenumber,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -59,13 +73,21 @@
       <if test="productnumber != null" >
         ProductNumber = #{productnumber,jdbcType=INTEGER},
       </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="placenumber != null" >
+        PlaceNumber = #{placenumber,jdbcType=INTEGER},
+      </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.wms.model.outbound_details" >
     update outbound_details
     set OutStockNumber = #{outstocknumber,jdbcType=CHAR},
-      ProductNumber = #{productnumber,jdbcType=INTEGER}
+      ProductNumber = #{productnumber,jdbcType=INTEGER},
+      Amount = #{amount,jdbcType=INTEGER},
+      PlaceNumber = #{placenumber,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

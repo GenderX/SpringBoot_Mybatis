@@ -7,6 +7,10 @@ public class outbound_details {
 
     private Integer productnumber;
 
+    private Integer amount;
+
+    private Integer placenumber;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +33,21 @@ public class outbound_details {
 
     public void setProductnumber(Integer productnumber) {
         this.productnumber = productnumber;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Integer getPlacenumber() {
+        return placenumber;
+    }
+
+    public void setPlacenumber(Integer placenumber) {
+        this.placenumber = placenumber;
     }
 }

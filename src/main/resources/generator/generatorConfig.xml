@@ -31,17 +31,17 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-      <!--  <table tableName="customer" domainObjectName="customer" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
+     <!--   <table tableName="customer" domainObjectName="customer" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
 
         <table tableName="inbound_details" domainObjectName="inbound_details" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
 
         <table tableName="inbound_master" domainObjectName="inbound_master" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
 
         <table tableName="inventory" domainObjectName="inventory" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
-
+-->
         <table tableName="outbound_details" domainObjectName="outbound_details" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
 
-        <table tableName="outbound_master" domainObjectName="outbound_master" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
+      <!--  <table tableName="outbound_master" domainObjectName="outbound_master" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
 
         <table tableName="product" domainObjectName="product" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
 
@@ -50,13 +50,9 @@
         <table tableName="staff" domainObjectName="staff_type" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
 
         <table tableName="supplier" domainObjectName="supplier" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
--->
         <table tableName="staff" domainObjectName="staff" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
         <table tableName="staff_type" domainObjectName="staff_type" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
-
-<!--
         <table tableName="warehouse" domainObjectName="warehouse" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
 -->
-
     </context>
 </generatorConfiguration>

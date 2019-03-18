@@ -15,7 +15,24 @@
     from warehouse
     where Number = #{number,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectAllOrQuery" resultType="com.wms.model.warehouse">
+      select *
+      from warehouse
+      <where>
+        <if test="number!=null and number!=''">
+              and  number =#{number}
+         </if>
+         <if test="name!=null and name!=''">
+           and name=#{name}
+         </if>
+      </where>
+
+
+
+
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from warehouse
     where Number = #{number,jdbcType=INTEGER}
   </delete>
