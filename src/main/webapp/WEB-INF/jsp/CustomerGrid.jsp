@@ -134,7 +134,7 @@
         <h3>客户信息</h3>
         <div class="div-leftform">
         <div style="margin-bottom:10px">
-            <input name="number" class="easyui-textbox" required="true" label="客户编号:" style="width:100%">
+            <input name="number" class="easyui-textbox" readonly="readonly"  label="客户编号:" style="width: 100%;background-color:red">
         </div>
         <div style="margin-bottom:10px">
             <input name="name" class="easyui-textbox" required="true" label="姓名:" style="width:100%">

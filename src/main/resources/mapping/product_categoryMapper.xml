@@ -15,6 +15,9 @@
     from product_category
     where Number = #{number,jdbcType=INTEGER}
   </select>
+  <select id="selectAll" resultType="com.wms.model.product_category">
+    select * from product_category
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from product_category
     where Number = #{number,jdbcType=INTEGER}

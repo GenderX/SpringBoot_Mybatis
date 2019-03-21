@@ -1,7 +1,13 @@
 package com.wms.mapper;
 
 import com.wms.model.product_category;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Mapper
+@Repository
 public interface product_categoryMapper {
     int deleteByPrimaryKey(Integer number);
 
@@ -14,4 +20,6 @@ public interface product_categoryMapper {
     int updateByPrimaryKeySelective(product_category record);
 
     int updateByPrimaryKey(product_category record);
+
+    List<product_category> selectAll();
 }

@@ -27,6 +27,11 @@ public class CusController {
     @Autowired
     CustomerService customerService;
 
+    /**
+     * 更新客户信息
+     * @param customers
+     * @return
+     */
     @RequestMapping("updateCustomer")
     @ResponseBody
     public Object updateCustomer(customer customers) {
@@ -41,7 +46,14 @@ public class CusController {
         //测试git
     }
 
-
+    /**
+     * 根据条件查询客户，条件为空查询所有客户
+     * @param page
+     * @param rows
+     * @param Number
+     * @param Name
+     * @return
+     */
     @GetMapping("getAll")
     @ResponseBody
     public Object getAllCus(int page, int rows, String Number, String Name) {
@@ -52,6 +64,12 @@ public class CusController {
         data.put("total", rowpage.getTotal());
         return data;
     }
+
+    /**
+     * 插入
+     * @param customers
+     * @return
+     */
 
     @RequestMapping("/insertCus")
     @ResponseBody
@@ -67,11 +85,17 @@ public class CusController {
             }
         } catch (Exception e) {
             errorMsg = e.getMessage();
-            map.put("errorMsg", "插入失败，请检查编号是否重复");
+            map.put("errorMsg", errorMsg);
         }
         map.put("success", flag);
         return map;
     }
+
+    /**
+     * 删除
+     * @param number
+     * @return
+     */
 
     @RequestMapping("/deleteCustomer")
     @ResponseBody

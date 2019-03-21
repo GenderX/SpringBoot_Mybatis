@@ -51,7 +51,7 @@
                                     href="javascript:openTab('客户管理','/page/CustomerGrid','icon-man')">客户管理</a></span>
                             </li>
                             <li><span><a
-                                    href="javascript:openTab('供应商管理','/page/CustomerGrid','icon-man')">供应商管理</a></span>
+                                    href="javascript:openTab('供应商管理','/page/supplierGrid','icon-man')">供应商管理</a></span>
                             </li>
                             <li><span><a href="javascript:openTab('员工管理','/page/StaffGrid','icon-man')">员工管理</a></span>
                             </li>
@@ -63,6 +63,9 @@
                         <ul>
                             <li><span><a
                                     href="javascript:openTab('仓库规划','/page/warehouseGrid','icon-man')">仓库规划</a></span>
+                            </li>
+                            <li><span><a
+                                    href="javascript:openTab('产品列表','/page/productGrid','icon-man')">产品列表</a></span>
                             </li>
                         </ul></li>
                     <li><span>File 3</span></li>

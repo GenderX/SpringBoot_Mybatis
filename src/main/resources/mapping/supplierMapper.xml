@@ -21,7 +21,19 @@
     from supplier
     where Number = #{number,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectAll" resultType="com.wms.model.supplier">
+      select *
+      from supplier
+      <where>
+        <if test="name!=null and name!=''">
+         and name =#{name}
+        </if>
+        <if test="number!=null and number!=''">
+          and number=#{number}
+        </if>
+      </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from supplier
     where Number = #{number,jdbcType=CHAR}
   </delete>

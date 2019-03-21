@@ -22,6 +22,11 @@ public class UploadController {
     @Value("${upload.filePath}")
     String filePath ;
 
+    /**
+     * 文件长传类
+     * @param file
+     * @return
+     */
     @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -22,5 +23,43 @@ public class WarehouseController {
         Page<warehouse> rowpage = PageHelper.startPage(page, rows);
         List<warehouse> list = warehouseService.getAll(Number, Name);
         return list;
+    }
+
+    @RequestMapping("/insertHouseNumber")
+    public Object insertHousenumber(warehouse wh) {
+        Boolean flag = false;
+        Integer insert = 0;
+        String errorMsg;
+        HashMap<String, Object> map = new HashMap<>();
+        try {
+            insert = warehouseService.insert(wh);
+            if (insert != 0) {
+                flag = true;
+            }
+        } catch (Exception e) {
+            errorMsg = e.getMessage();
+            map.put("errorMsg", "插入失败，请检查编号是否重复");
+        }
+        map.put("success", flag);
+        return map;
+    }
+
+    @RequestMapping("/updateHouseNumber")
+    public Object updateHouseNumber(warehouse wh) {
+        Integer update = warehouseService.updateStaff(wh);
+        HashMap<String, Object> map = new HashMap<>();
+        if (update == 0) {
+            String errorMes = "更新失败";
+            map.put("errorMsg", errorMes);
+        }
+        map.put("success", true);
+        return map;
+    }
+
+    @RequestMapping("/deleteHouseNumber")
+    public Object delectWh(Integer number) {
+        Object o = warehouseService.deleteWH(number);
+        System.out.println(o.toString());
+        return o;
     }
 }

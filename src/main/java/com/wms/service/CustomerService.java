@@ -2,6 +2,7 @@ package com.wms.service;
 
 import com.wms.mapper.customerMapper;
 import com.wms.model.customer;
+import com.wms.utils.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +13,7 @@ public class CustomerService {
 @Autowired
 customerMapper customersMapper;
     public Integer insert(customer customers ) throws Exception {
+        customers.setNumber(UUIDGenerator.createID());
         int insert = customersMapper.insert(customers);
         return insert;
     }
