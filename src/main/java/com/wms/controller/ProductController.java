@@ -37,6 +37,19 @@ public class ProductController {
     }
 
     /**
+     * 不分页获取所有产品
+     * @param Number
+     * @param Name
+     * @return
+     */
+    @RequestMapping("/getAllCombo")
+    public List<productVO> selectAllProduct(String Number, String Name) {
+        List<productVO> products = productService.slectAll(Number, Name);
+        return products;
+    }
+
+
+    /**
      * 查询产品种类字典值
      * @return 产品种类字典
      */

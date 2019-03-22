@@ -68,7 +68,12 @@
                                     href="javascript:openTab('产品列表','/page/productGrid','icon-man')">产品列表</a></span>
                             </li>
                         </ul></li>
-                    <li><span>File 3</span></li>
+                    <li><span><a
+                            href="javascript:openTab('入库单制定','/page/inbound','icon-man')">入库单制定</a></span>
+                    </li>
+                    <li><span><a
+                            href="javascript:openTab('入库单制定','/page/inbound2','icon-man')">入库单制定2</a></span>
+                    </li>
                 </ul>
             </li>
             <li><span>File21</span></li>

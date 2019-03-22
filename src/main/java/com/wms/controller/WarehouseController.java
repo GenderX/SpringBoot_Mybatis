@@ -25,6 +25,18 @@ public class WarehouseController {
         return list;
     }
 
+    /**
+     * 不分页查询库位
+     * @param Number
+     * @param Name
+     * @return
+     */
+    @RequestMapping("/getAllCombo")
+    public Object getAll( String Number, String Name) {
+        List<warehouse> list = warehouseService.getAll(Number, Name);
+        return list;
+    }
+
     @RequestMapping("/insertHouseNumber")
     public Object insertHousenumber(warehouse wh) {
         Boolean flag = false;
