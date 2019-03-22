@@ -41,46 +41,52 @@
             pageList: [10, 15, 20, 25, 30],
             columns: [[
 
-                { field: 'productnumber',width:225,title: '产品编号',
-                    editor:{ type:'combogrid',
-                             options:{
-                                 panelWidth: 500,
-                                 idField: 'number',
-                                 textField: 'name',
-                                 url: '/product/getAllCombo',
-                                 method: 'get',
-                                 columns: [[
-                                     {field:'number',title:'产品编号',width:225},
-                                     {field:'name',title:'名称',width:80},
-                                     {field:'categoryname',title:'种类',width:80,align:'right'},
-                                     {field:'barcode',title:'条码',width:123,align:'right'},
-                                     {field:'spec',title:'产品型号',width:100},
-                                     {field:'price',title:'价格',width:60,align:'center'},
-                                     {field:'unit',title:'单位',width:60,align:'center'}
-                                 ]],
-                                 fitColumns: true
-                             }
+                {
+                    field: 'productnumber', width: 225, title: '产品编号',
+                    editor: {
+                        type: 'combogrid',
+                        options: {
+                            panelWidth: 500,
+                            idField: 'number',
+                            textField: 'name',
+                            url: '/product/getAllCombo',
+                            method: 'get',
+                            columns: [[
+                                {field: 'number', title: '产品编号', width: 225},
+                                {field: 'name', title: '名称', width: 80},
+                                {field: 'categoryname', title: '种类', width: 80, align: 'right'},
+                                {field: 'barcode', title: '条码', width: 123, align: 'right'},
+                                {field: 'spec', title: '产品型号', width: 100},
+                                {field: 'price', title: '价格', width: 60, align: 'center'},
+                                {field: 'unit', title: '单位', width: 60, align: 'center'}
+                            ]],
+                            fitColumns: true
+                        }
 
-                    } },
-             /*   { field: 'productnumber', title: '产品编号',editor:"text" },*/
-                { field: 'amount', width:100,title: '数量' ,editor:"text"},
-                { field: 'storehousenumber', width:150,title: '库位', editor:{ type:'combogrid',
-                        options:{
+                    }
+                },
+                /*   { field: 'productnumber', title: '产品编号',editor:"text" },*/
+                {field: 'amount', width: 100, title: '数量', editor: "text"},
+                {
+                    field: 'storehousenumber', width: 150, title: '库位', editor: {
+                        type: 'combogrid',
+                        options: {
                             panelWidth: 500,
                             idField: 'number',
                             textField: 'name',
                             url: '/warehouse/getAllCombo',
                             method: 'get',
                             columns: [[
-                                {field:'number',title:'产品编号',width:225},
-                                {field:'name',title:'名称',width:80},
-                                {field:'admin',title:'管理员',width:80,align:'right'},
+                                {field: 'number', title: '产品编号', width: 225},
+                                {field: 'name', title: '名称', width: 80},
+                                {field: 'admin', title: '管理员', width: 80, align: 'right'},
 
                             ]],
                             fitColumns: true
                         }
 
-                    }  }
+                    }
+                }
             ]],
             toolbar: '#tb'
         });
@@ -88,9 +94,11 @@
 
     //编辑状态
     function endEditing() {
-        if (editIndex == undefined) { return true }
+        if (editIndex == undefined) {
+            return true
+        }
         if ($('#dg').datagrid('validateRow', editIndex)) {
-            var ed = $('#dg').datagrid('getEditor', { index: editIndex, field: 'productid' });
+            var ed = $('#dg').datagrid('getEditor', {index: editIndex, field: 'productid'});
             $('#dg').datagrid('endEdit', editIndex);
             editIndex = undefined;
             return true;
@@ -115,19 +123,23 @@
     //添加一行
     function append() {
         if (endEditing()) {
-            $('#dg').datagrid('appendRow', {  });
+            $('#dg').datagrid('appendRow', {});
             editIndex = $('#dg').datagrid('getRows').length - 1;
             $('#dg').datagrid('selectRow', editIndex)
                 .datagrid('beginEdit', editIndex);
         }
     }
+
     //删除一行
     function remove() {
-        if (editIndex == undefined) { return }
+        if (editIndex == undefined) {
+            return
+        }
         $('#dg').datagrid('cancelEdit', editIndex)
             .datagrid('deleteRow', editIndex);
         editIndex = undefined;
     }
+
     //撤销编辑
     function reject() {
         $('#dg').datagrid('rejectChanges');
@@ -143,6 +155,10 @@
                 var inserted = $dg.datagrid('getChanges', "inserted");
                 var deleted = $dg.datagrid('getChanges', "deleted");
                 var updated = $dg.datagrid('getChanges', "updated");
+                //  var supplier=$('#supplierNum').val();
+                var supplier = $("#supplierNum").combogrid('grid').datagrid('getSelected').number;
+                var Recipient = $("#Recipient").combogrid('grid').datagrid('getSelected').number;
+                console.log(supplier);
                 var effectRow = new Object();
                 if (inserted.length) {
                     effectRow["inserted"] = JSON.stringify(inserted);
@@ -155,7 +171,11 @@
                 }
             }
         }
-        $.post("/inbound/CommitBach", effectRow, function (rsp) {
+        $.post("/inbound/CommitBach", {
+            effectRow: effectRow.inserted,
+            supplier: supplier,
+            Recipient:Recipient
+        }, function (rsp) {
             if (rsp) {
                 $dg.datagrid('acceptChanges');
                 bindData();
@@ -171,11 +191,13 @@
             saveChanges();
         });
     }
+
     function bindAddButton() {
         $("#addButton").click(function () {
             append();
         });
     }
+
     function bindDelButton() {
         $("#delButton").click(function () {
             remove();
@@ -188,8 +210,44 @@
 </table>
 <div id="tb">
     <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="addButton">新增</a>
-    <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delButton">删除</a>
-    <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'" id="saveButton">保存</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true"
+       id="delButton">删除</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'"
+       id="saveButton">保存</a>
+    <span>供应商编号:</span>
+    <select id="supplierNum" class="easyui-combogrid" style="width:250px" data-options="
+			panelWidth: 800,
+			idField: 'number',
+			textField: 'name',
+			url: '/supplier/getAllCombo',
+			method: 'get',
+			columns: [[
+				{field:'number',title:'供应商编号',width:200},
+				{field:'name',title:'供应商名称',width:120},
+				{field:'contact',title:'供应商联系人',width:120,align:'right'},
+				{field:'address',title:'供应商地址',width:120,align:'right'},
+				{field:'postcode',title:'供应商邮编',width:120},
+				{field:'phone',title:'供应商电话',width:120,align:'center'}
+			]],
+			fitColumns: true
+		">
+    </select>
+
+    <span>接收人:</span>
+    <select id="Recipient" class="easyui-combogrid" style="width:250px" data-options="
+			panelWidth: 800,
+			idField: 'number',
+			textField: 'name',
+			url: '/staff/getAllCombo',
+			method: 'get',
+			columns: [[
+				{field:'number',title:'员工编号',width:200},
+				{field:'name',title:'员工名',width:120},
+				{field:'type',title:'员工类型',width:120,align:'right'},
+			]],
+			fitColumns: true
+		">
+    </select>
 </div>
 
 </body>

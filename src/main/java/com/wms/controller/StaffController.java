@@ -34,6 +34,20 @@ public class StaffController {
         return staff;
     }
 
+    /**
+     * 不分页查询
+     * @param Number
+     * @param Name
+     * @return
+     */
+    @RequestMapping("/getAllCombo")
+    @ResponseBody
+    public Object getAllStaff(String Number, String Name) {
+        List<staffVO> staff = staffService.selectAllOrID(Name, Number);
+        return staff;
+    }
+
+
     @RequestMapping("/insertStaff")
     @ResponseBody
     public Object insertStaff(staff st) {
@@ -48,7 +62,7 @@ public class StaffController {
             }
         } catch (Exception e) {
             errorMsg = e.getMessage();
-            map.put("errorMsg", "插入失败，请检查编号是否重复");
+            map.put("errorMsg",errorMsg);
         }
         map.put("success", flag);
         return map;

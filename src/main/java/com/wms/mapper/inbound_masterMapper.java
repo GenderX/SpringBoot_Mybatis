@@ -1,7 +1,11 @@
 package com.wms.mapper;
 
 import com.wms.model.inbound_master;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
+@Mapper
+@Repository
 public interface inbound_masterMapper {
     int deleteByPrimaryKey(String number);
 

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wms.mapper.inbound_detailsMapper" >
   <resultMap id="BaseResultMap" type="com.wms.model.inbound_details" >
-    <id column="ID" property="id" jdbcType="INTEGER" />
+    <id column="ID" property="id" jdbcType="VARCHAR" />
     <result column="InStockNumber" property="instocknumber" jdbcType="CHAR" />
     <result column="ProductNumber" property="productnumber" jdbcType="CHAR" />
     <result column="Amount" property="amount" jdbcType="REAL" />
@@ -12,21 +12,21 @@
   <sql id="Base_Column_List" >
     ID, InStockNumber, ProductNumber, Amount, StoreHouseNumber, CompleteTime
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from inbound_details
-    where ID = #{id,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from inbound_details
-    where ID = #{id,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.wms.model.inbound_details" >
     insert into inbound_details (ID, InStockNumber, ProductNumber, 
       Amount, StoreHouseNumber, CompleteTime
       )
-    values (#{id,jdbcType=INTEGER}, #{instocknumber,jdbcType=CHAR}, #{productnumber,jdbcType=CHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{instocknumber,jdbcType=CHAR}, #{productnumber,jdbcType=CHAR}, 
       #{amount,jdbcType=REAL}, #{storehousenumber,jdbcType=INTEGER}, #{completetime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -54,7 +54,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="instocknumber != null" >
         #{instocknumber,jdbcType=CHAR},
@@ -92,7 +92,7 @@
         CompleteTime = #{completetime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where ID = #{id,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.wms.model.inbound_details" >
     update inbound_details
@@ -101,6 +101,6 @@
       Amount = #{amount,jdbcType=REAL},
       StoreHouseNumber = #{storehousenumber,jdbcType=INTEGER},
       CompleteTime = #{completetime,jdbcType=TIMESTAMP}
-    where ID = #{id,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

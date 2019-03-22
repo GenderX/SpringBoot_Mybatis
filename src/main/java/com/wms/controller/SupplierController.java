@@ -34,6 +34,19 @@ public class SupplierController {
     }
 
     /**
+     * 不分页查询供应商
+     * @param Number
+     * @param Name
+     * @return
+     */
+
+    @RequestMapping("/getAllCombo")
+    public List<supplier> getAll(String Number, String Name) {
+        List<supplier> supplierList = supplierService.selectAllOrID(Name, Number);
+        return supplierList;
+    }
+
+    /**
      * 插入供应商
      *
      * @param sp

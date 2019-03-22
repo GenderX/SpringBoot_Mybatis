@@ -7,8 +7,17 @@
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
 <style>
-    .div-leftform{ float:left;width:49%;padding-left: 10px}
-    .div-rightform{ float:left;width:49%;padding-left: 10px}
+    .div-leftform {
+        float: left;
+        width: 49%;
+        padding-left: 10px
+    }
+
+    .div-rightform {
+        float: left;
+        width: 49%;
+        padding-left: 10px
+    }
 </style>
 
 <html>
@@ -26,14 +35,15 @@
             Name: $('#Name').val()
         });
     }
+
     function destroyUser() {
         var row = $('#dg').datagrid('getSelected');
-        if (row){
+        if (row) {
             console.log(row);
-            $.messager.confirm('确认','是否删除供应商?',function(r){
-                if (r){
-                    $.post('/supplier/deleteSupplier',{number:row.number},function(result){
-                        if (result.success){
+            $.messager.confirm('确认', '是否删除供应商?', function (r) {
+                if (r) {
+                    $.post('/supplier/deleteSupplier', {number: row.number}, function (result) {
+                        if (result.success) {
                             $('#dg').datagrid('reload');	// reload the user data
                         } else {
                             $.messager.show({	// show error message
@@ -41,7 +51,7 @@
                                 msg: result.errorMsg
                             });
                         }
-                    },'json');
+                    }, 'json');
                 }
             });
         }
@@ -122,24 +132,24 @@
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除供应商</a>
 
     <span>供应商编号:</span>
-                <input id="Number" style="line-height:26px;border:1px solid #ccc">
-                <span>供应商名称:</span>
-                <input id="Name" style="line-height:26px;border:1px solid #ccc">
-                <a href="#" class="easyui-linkbutton" plain="false" onclick="doSearch()">Search</a>
-            </div>
+    <input id="Number" style="line-height:26px;border:1px solid #ccc">
+    <span>供应商名称:</span>
+    <input id="Name" style="line-height:26px;border:1px solid #ccc">
+    <a href="#" class="easyui-linkbutton" plain="false" onclick="doSearch()">Search</a>
+</div>
 
-            <div id="dlg" class="easyui-dialog" style="width:600px"
-                 data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
-                <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
-                    <h3>供应商信息</h3>
-                    <div class="div-leftform">
-                        <div style="margin-bottom:10px">
-                            <input name="number" class="easyui-textbox" readonly="readonly"  label="供应商编号:" style="width:100%">
-                        </div>
-                        <div style="margin-bottom:10px">
-                            <input name="name" class="easyui-textbox" required="true" label="姓名:" style="width:100%">
-                        </div>
-                        <div style="margin-bottom:10px">
+<div id="dlg" class="easyui-dialog" style="width:600px"
+     data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
+    <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
+        <h3>供应商信息</h3>
+        <div class="div-leftform">
+            <div style="margin-bottom:10px">
+                <input name="number" class="easyui-textbox" readonly="readonly" label="供应商编号:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="name" class="easyui-textbox" required="true" label="姓名:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
                 <input name="contact" class="easyui-textbox" label="联系人名:" style="width:100%">
             </div>
             <div style="margin-bottom:10px">
