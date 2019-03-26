@@ -21,7 +21,18 @@
     from inbound_master
     where Number = #{number,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByNum" resultType="com.wms.model.inboundVO">
+      select a.*,s.`Name` as suppliername,s2.Name as recipientname
+      FROM inbound_master a
+      inner join supplier s on a.SupplierNumber = s.Number
+      inner join staff s2 on a.Recipient = s2.Number
+      <where>
+        <if test="number!=null and number!=''">
+          and a.SupplierNumber=#{number}
+        </if>
+      </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from inbound_master
     where Number = #{number,jdbcType=CHAR}
   </delete>

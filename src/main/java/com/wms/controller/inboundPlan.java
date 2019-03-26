@@ -1,6 +1,8 @@
 package com.wms.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.wms.model.inboundVO;
 import com.wms.model.inbound_details;
 import com.wms.service.InboundPlanService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -26,15 +28,23 @@ public class inboundPlan {
      * @param effectRow
      */
     @RequestMapping("/CommitBach")
-    public void commitBach(HttpServletRequest request, HttpServletResponse response,
-                           String effectRow, String supplier, String Recipient) {
+    public Object commitBach(HttpServletRequest request, HttpServletResponse response,
+                             String effectRow, String supplier, String Recipient) {
         List<inbound_details> detailsList = JSONObject.parseArray(effectRow, inbound_details.class);
-        HSSFWorkbook sheet = inboundPlanService.makeInboundPlan(detailsList, supplier, Recipient);
-        //响应到客户端
+        String id = inboundPlanService.makeInboundPlan(detailsList, supplier, Recipient);
+
+        return id;
+
+    }
+
+    @RequestMapping("/downloadPlan")
+    public void downloadPlan(HttpServletRequest request, HttpServletResponse response, String num) {
+        num = "1000000588447497";
+        HSSFWorkbook wb = inboundPlanService.generateXls(num);
         try {
-            this.setResponseHeader(response, inboundPlanService.getFilename());
+            this.setResponseHeader(response, inboundPlanService.getFileName());
             OutputStream os = response.getOutputStream();
-            sheet.write(os);
+            wb.write(os);
             os.flush();
             os.close();
         } catch (Exception e) {
@@ -58,4 +68,14 @@ public class inboundPlan {
             ex.printStackTrace();
         }
     }
+
+    @RequestMapping("/getAll")
+    public Object getAll(int page, int rows,String Number){
+        PageHelper.startPage(page, rows);
+       List<inboundVO> list= inboundPlanService.getAll(Number);
+       return list;
+
+    }
+
+
 }

@@ -4,6 +4,8 @@ import com.wms.model.inbound_details;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface inbound_detailsMapper {
@@ -18,4 +20,6 @@ public interface inbound_detailsMapper {
     int updateByPrimaryKeySelective(inbound_details record);
 
     int updateByPrimaryKey(inbound_details record);
+
+    List<inbound_details> selectByInStockNumber(String num);
 }

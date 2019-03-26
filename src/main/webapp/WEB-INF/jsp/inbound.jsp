@@ -179,6 +179,7 @@
             if (rsp) {
                 $dg.datagrid('acceptChanges');
                 bindData();
+                alert("入库单生成成功,单据编号："+rsp)
             }
         }, "JSON").error(function () {
             $.messager.alert("提示", "提交错误了！");

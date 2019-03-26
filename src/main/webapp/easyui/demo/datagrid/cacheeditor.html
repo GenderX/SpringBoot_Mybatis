@@ -111,8 +111,8 @@
 			if (editIndex == undefined){return true}
 			if ($('#dg').datagrid('validateRow', editIndex)){
 				var ed = $('#dg').datagrid('getEditor', {index:editIndex,field:'productid'});
-				var productname = $(ed.target).combobox('getText');
-				$('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
+				var approver = $(ed.target).combobox('getText');
+				$('#dg').datagrid('getRows')[editIndex]['productname'] = approver;
 				$('#dg').datagrid('endEdit', editIndex);
 				editIndex = undefined;
 				return true;
