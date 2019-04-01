@@ -1,6 +1,7 @@
 package com.wms.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.wms.model.inboundVO;
 import com.wms.model.inbound_details;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -69,18 +71,31 @@ public class inboundPlan {
     }
 
     @RequestMapping("/getAll")
-    public Object getAll(int page, int rows,String Number){
-        PageHelper.startPage(page, rows);
-       List<inboundVO> list= inboundPlanService.getAll(Number);
-       return list;
+    public Object getAll(int page, int rows, String Number) {
+        Page<Object> rowPage = PageHelper.startPage(page, rows);
+        List<inboundVO> list = inboundPlanService.getAll(Number);
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("rows", list);
+        data.put("total", rowPage.getTotal());
+        return data;
 
     }
 
     @RequestMapping("/done")
-    public Object done(String number,String approver,String deliverer){
-      /*  inboundPlanService.detailsFinish(number);
-        inbou*/
-      return null;
+    public Object done(String number, String approver, String deliverer) {
+        System.out.println(number + "========" + approver + "==========" + deliverer);
+        HashMap<String, Object> map = new HashMap<>();
+        try {
+            inboundPlanService.finishMaster(number, approver, deliverer);
+            inboundPlanService.finishDetails(number);
+            inboundPlanService.addInventory(number);
+        } catch (Exception e) {
+            String errorMsg = e.getMessage();
+            map.put("errorMsg", errorMsg);
+            return map;
+        }
+        map.put("success", true);
+        return map;
     }
 
 

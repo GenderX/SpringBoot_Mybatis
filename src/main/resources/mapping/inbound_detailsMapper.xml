@@ -107,4 +107,9 @@
       CompleteTime = #{completetime,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
+    <update id="updateDate">
+      update inbound_details
+      set CompleteTime=CURRENT_TIMESTAMP
+      where InStockNumber=#{number}
+    </update>
 </mapper>

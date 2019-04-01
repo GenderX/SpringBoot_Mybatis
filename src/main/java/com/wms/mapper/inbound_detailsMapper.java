@@ -22,4 +22,6 @@ public interface inbound_detailsMapper {
     int updateByPrimaryKey(inbound_details record);
 
     List<inbound_details> selectByInStockNumber(String num);
+
+    void updateDate(String number);
 }
