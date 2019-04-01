@@ -39,7 +39,6 @@ public class inboundPlan {
 
     @RequestMapping("/downloadPlan")
     public void downloadPlan(HttpServletRequest request, HttpServletResponse response, String num) {
-        num = "1000000588447497";
         HSSFWorkbook wb = inboundPlanService.generateXls(num);
         try {
             this.setResponseHeader(response, inboundPlanService.getFileName());
@@ -75,6 +74,13 @@ public class inboundPlan {
        List<inboundVO> list= inboundPlanService.getAll(Number);
        return list;
 
+    }
+
+    @RequestMapping("/done")
+    public Object done(String number,String approver,String deliverer){
+      /*  inboundPlanService.detailsFinish(number);
+        inbou*/
+      return null;
     }
 
 

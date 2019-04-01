@@ -1,5 +1,7 @@
 package com.wms.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class inbound_details {
@@ -55,6 +57,7 @@ public class inbound_details {
         this.storehousenumber = storehousenumber;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getCompletetime() {
         return completetime;
     }

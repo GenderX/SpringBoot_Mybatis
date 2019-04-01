@@ -40,9 +40,9 @@
     function editUser() {
         var row = $('#dg').datagrid('getSelected');
         if (row) {
-            $('#dlg').dialog('open').dialog('setTitle', '编辑入库单');
+            $('#dlg').dialog('open').dialog('setTitle', '审核');
             $('#fm').form('load', row);
-            url = '/inbound/updateMaster'
+            url = '/inbound/done'
         }
     }
 
@@ -70,14 +70,14 @@
         });
     }
 
-    function formatOper(val,row,index){
-        return '<a href="#" onclick="downloads('+row.number+')">下载</a>';
+    function formatOper(val, row, index) {
+        return '<a href="#" onclick="downloads(' + row.number + ')">下载</a>';
     }
 
 
     function downloads(id) {
-        var url = "/inbound/downloadPlan?num="+id;
-        window.location=url;
+        var url = "/inbound/downloadPlan?num=" + id;
+        window.location = url;
     }
 
 </script>
@@ -103,13 +103,13 @@
         <th data-options="field:'recipient',width:100,hidden:true">接收人ID</th>
         <th data-options="field:'recipientname',width:100">接收人</th>
         <th data-options="field:'isfinish',width:120,align:'left'">是否完成</th>
-        <th data-options="field:'_operate',width:80,align:'center',formatter:formatOper">下载</th>
+        <th data-options="field:'_operate',width:80,align:'center',formatter:formatOper">下载入库单</th>
     </tr>
     </thead>
 </table>
 <div id="toolbar">
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
-       onclick="editUser()">编辑产品</a>
+       onclick="editUser()">审核</a>
     <span>产品编号:</span>
     <input id="Number" style="line-height:26px;border:1px solid #ccc">
     <a href="#" class="easyui-linkbutton" plain="false" onclick="doSearch()">Search</a>
@@ -119,36 +119,43 @@
      data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
     <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
         <h3>产品信息</h3>
-        <div class="div-leftform">
-            <div style="margin-bottom:10px">
-                <input name="number" class="easyui-textbox"  label="产品编号:" readonly="readonly" style="width:100%">
-            </div>
-            <div style="margin-bottom:10px">
-                <input name="name" class="easyui-textbox" required="true" label="产品名:" style="width:100%">
-            </div>
-            <div style="margin-bottom:10px">
-                <input label="职位：" id="categorynumber" name="categorynumber" class="easyui-combobox" data-options="
-         valueField: 'number', textField: 'name',
-         url: '/product/getCategorynumber'"/>
-                <%--<input name="categoryname" class="easyui-textbox" label="分类:" style="width:100%">--%>
-            </div>
-            <div style="margin-bottom:10px">
-                <input name="barcode" class="easyui-textbox" label="条码:" style="width:100%">
-            </div>
-
+        <div style="margin-bottom:10px">
+            <input name="number" class="easyui-textbox" label="入库编号:" readonly="readonly" style="width:100%">
         </div>
-        <div class="div-rightform">
-            <div style="margin-bottom:10px">
-                <input name="price" class="easyui-textbox" label="价格:" style="width:100%">
-            </div>
-            <div style="margin-bottom:10px">
-                <input name="unit" class="easyui-textbox" label="计量单位:" style="width:100%">
-            </div>
-            <div style="margin-bottom:10px">
-                <input name="spec" class="easyui-textbox" label="产品型号:" style="width:100%">
-            </div>
-
+        <div style="margin-bottom:10px">
+            <input name="suppliername" class="easyui-textbox" required="true" label="供应商编号:" style="width:100%">
         </div>
+        <div style="margin-bottom:10px">
+            <input required="true" label="审核人:" name="approver" class="easyui-combogrid" style="width:250px" data-options="
+            panelWidth: 500,
+			idField: 'number',
+			textField: 'name',
+			url: '/staff/getAllCombo',
+			method: 'get',
+			columns: [[
+				{field:'number',title:'员工编号',width:200},
+				{field:'name',title:'员工名',width:120},
+				{field:'type',title:'员工类型',width:120,align:'right'},
+			]],
+			fitColumns: true
+		">
+        </div>
+        <div style="margin-bottom:10px">
+            <input required="true" label="送货人:" name="deliverer" class="easyui-combogrid" style="width:250px" data-options="
+            panelWidth: 500,
+			idField: 'number',
+			textField: 'name',
+			url: '/staff/getAllCombo',
+			method: 'get',
+			columns: [[
+				{field:'number',title:'员工编号',width:200},
+				{field:'name',title:'员工名',width:120},
+				{field:'type',title:'员工类型',width:120,align:'right'},
+			]],
+			fitColumns: true
+		">
+        </div>
+
 
     </form>
 </div>

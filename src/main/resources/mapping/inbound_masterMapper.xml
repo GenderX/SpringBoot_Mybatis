@@ -28,7 +28,7 @@
       inner join staff s2 on a.Recipient = s2.Number
       <where>
         <if test="number!=null and number!=''">
-          and a.SupplierNumber=#{number}
+          and a.Number=#{number}
         </if>
       </where>
     </select>

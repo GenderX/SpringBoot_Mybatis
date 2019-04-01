@@ -6,6 +6,7 @@ import com.wms.model.staff;
 import com.wms.model.staffVO;
 import com.wms.model.staff_type;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

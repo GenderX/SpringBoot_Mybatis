@@ -3,6 +3,7 @@ package com.wms.mapper;
 import com.wms.model.inboundVO;
 import com.wms.model.inbound_master;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,6 +23,6 @@ public interface inbound_masterMapper {
 
     int updateByPrimaryKey(inbound_master record);
 
-    List<inboundVO> selectByNum(String number);
+    List<inboundVO> selectByNum(@Param("number") String number);
 
 }

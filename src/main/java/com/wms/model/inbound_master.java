@@ -1,5 +1,7 @@
 package com.wms.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class inbound_master {
@@ -19,12 +21,13 @@ public class inbound_master {
 
     private Boolean isfinish;
 
+
     public String getNumber() {
         return number;
     }
 
     public void setNumber(String number) {
-        this.number = number == null ? null : number.trim();
+        this.number = number;
     }
 
     public String getSuppliernumber() {
@@ -35,6 +38,7 @@ public class inbound_master {
         this.suppliernumber = suppliernumber == null ? null : suppliernumber.trim();
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getCreatetime() {
         return createtime;
     }
@@ -43,6 +47,7 @@ public class inbound_master {
         this.createtime = createtime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getCompletetime() {
         return completetime;
     }
