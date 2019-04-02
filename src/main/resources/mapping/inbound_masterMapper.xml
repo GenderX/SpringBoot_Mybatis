@@ -31,6 +31,7 @@
           and a.Number=#{number}
         </if>
       </where>
+      order by a.isFinish asc, a.CreateTime desc
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from inbound_master
