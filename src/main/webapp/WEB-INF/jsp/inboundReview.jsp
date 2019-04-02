@@ -80,6 +80,14 @@
         window.location = url;
     }
 
+    function isFinish(value, row, index) {
+        if (row.isfinish) {
+            return "是";
+        } else {
+            return "否";
+        }
+    }
+
 </script>
 
 <table id="dg" class="easyui-datagrid" title="入库计划" style="width:100%;height:auto"
@@ -102,7 +110,7 @@
         <th data-options="field:'completetime',width:180">完成时间</th>
         <th data-options="field:'recipient',width:100,hidden:true">接收人ID</th>
         <th data-options="field:'recipientname',width:100">接收人</th>
-        <th data-options="field:'isfinish',width:120,align:'left'">是否完成</th>
+        <th data-options="field:'isfinish',formatter:isFinish,width:120,align:'left'">是否完成</th>
         <th data-options="field:'_operate',width:80,align:'center',formatter:formatOper">下载入库单</th>
     </tr>
     </thead>
@@ -118,15 +126,16 @@
 <div id="dlg" class="easyui-dialog" style="width:600px"
      data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
     <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
-        <h3>产品信息</h3>
+        <h3>入库</h3>
         <div style="margin-bottom:10px">
             <input name="number" class="easyui-textbox" label="入库编号:" readonly="readonly" style="width:100%">
         </div>
         <div style="margin-bottom:10px">
-            <input name="suppliername" class="easyui-textbox" required="true" label="供应商编号:" style="width:100%">
+            <input name="suppliername" class="easyui-textbox" required="true" label="供应商:" style="width:100%">
         </div>
         <div style="margin-bottom:10px">
-            <input required="true" label="审核人:" name="approver" class="easyui-combogrid" style="width:250px" data-options="
+            <input required="true" label="审核人:" name="approver" class="easyui-combogrid" style="width:250px"
+                   data-options="
             panelWidth: 500,
 			idField: 'number',
 			textField: 'name',
@@ -141,7 +150,8 @@
 		">
         </div>
         <div style="margin-bottom:10px">
-            <input required="true" label="送货人:" name="deliverer" class="easyui-combogrid" style="width:250px" data-options="
+            <input required="true" label="送货人:" name="deliverer" class="easyui-combogrid" style="width:250px"
+                   data-options="
             panelWidth: 500,
 			idField: 'number',
 			textField: 'name',
