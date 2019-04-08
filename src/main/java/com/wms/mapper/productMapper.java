@@ -3,6 +3,7 @@ package com.wms.mapper;
 import com.wms.model.product;
 import com.wms.model.productVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,5 +23,5 @@ public interface productMapper {
 
     int updateByPrimaryKey(product record);
 
-    List<productVO> selectAll(String number, String name);
+    List<productVO> selectAll(@Param("number") String number,@Param("name") String name);
 }

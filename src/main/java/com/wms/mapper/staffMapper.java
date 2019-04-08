@@ -3,6 +3,7 @@ package com.wms.mapper;
 import com.wms.model.staff;
 import com.wms.model.staffVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,5 +23,5 @@ public interface staffMapper {
 
     int updateByPrimaryKey(staff record);
 
-    List<staffVO> selectAllOrID(String name, String number);
+    List<staffVO> selectAllOrID(@Param("name") String name, @Param("number") String number);
 }

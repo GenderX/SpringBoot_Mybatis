@@ -2,6 +2,7 @@ package com.wms.mapper;
 
 import com.wms.model.warehouse;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,5 +22,5 @@ public interface warehouseMapper {
 
     int updateByPrimaryKey(warehouse record);
 
-    List<warehouse> selectAllOrQuery(String number, String name);
+    List<warehouse> selectAllOrQuery(@Param("number") String number,@Param("name") String name);
 }

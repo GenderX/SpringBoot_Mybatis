@@ -2,6 +2,7 @@ package com.wms.mapper;
 
 import com.wms.model.customer;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,5 +22,5 @@ public interface customerMapper {
 
     int updateByPrimaryKey(customer record);
 
-    List<customer> selectAllOrID(String Number, String Name);
+    List<customer> selectAllOrID(@Param("Number") String Number,@Param("Name") String Name);
 }

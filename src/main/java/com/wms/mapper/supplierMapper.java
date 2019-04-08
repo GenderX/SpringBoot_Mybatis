@@ -2,6 +2,7 @@ package com.wms.mapper;
 
 import com.wms.model.supplier;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,5 +22,5 @@ public interface supplierMapper {
 
     int updateByPrimaryKey(supplier record);
 
-    List<supplier> selectAll(String name, String number);
+    List<supplier> selectAll(@Param("name") String name,@Param("number") String number);
 }
