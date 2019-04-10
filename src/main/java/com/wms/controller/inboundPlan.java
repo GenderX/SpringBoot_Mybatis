@@ -39,6 +39,13 @@ public class inboundPlan {
 
     }
 
+    /**
+     * XLS文件写入流输出至浏览器
+     * @param request
+     * @param response
+     * @param num
+     */
+
     @RequestMapping("/downloadPlan")
     public void downloadPlan(HttpServletRequest request, HttpServletResponse response, String num) {
         HSSFWorkbook wb = inboundPlanService.generateXls(num);
@@ -53,8 +60,12 @@ public class inboundPlan {
         }
     }
 
-    //发送响应流方法
-    public void setResponseHeader(HttpServletResponse response, String fileName) {
+    /**
+     * 发送响应流方法
+     * @param response
+     * @param fileName
+     */
+       public void setResponseHeader(HttpServletResponse response, String fileName) {
         try {
             try {
                 fileName = new String(fileName.getBytes(), "ISO8859-1");
@@ -81,10 +92,21 @@ public class inboundPlan {
 
     }
 
+    /**
+     * 入库单完成，写入库存
+     * @param number
+     * @param approver
+     * @param deliverer
+     * @return
+     */
     @RequestMapping("/done")
     public Object done(String number, String approver, String deliverer) {
-        System.out.println(number + "========" + approver + "==========" + deliverer);
         HashMap<String, Object> map = new HashMap<>();
+        Boolean isFinish=inboundPlanService.isFinish(number);
+        if (isFinish){
+            map.put("errorMsg", "入库失败，当前单据已审核入库！！！！");
+            return map;
+        }
         try {
             inboundPlanService.finishMaster(number, approver, deliverer);
             inboundPlanService.finishDetails(number);

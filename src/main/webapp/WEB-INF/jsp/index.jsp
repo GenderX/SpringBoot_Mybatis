@@ -67,12 +67,30 @@
                             <li><span><a
                                     href="javascript:openTab('产品列表','/page/productGrid','icon-man')">产品列表</a></span>
                             </li>
-                        </ul></li>
+                        </ul>
+                    </li>
+                    <li><span>入库作业</span>
+                    <ul>
                     <li><span><a
                             href="javascript:openTab('入库单制定','/page/inbound','icon-man')">入库单制定</a></span>
                     </li>
                     <li><span><a
                             href="javascript:openTab('入库计划','/page/inboundReview','icon-man')">入库计划</a></span>
+                    </li>
+                    </ul>
+                    </li>
+
+                    <li><span>库内作业</span>
+                    <ul>
+                        <li><span><a
+                                href="javascript:openTab('入库单制定','/page/inbound','icon-man')">入库单制定</a></span></li>
+                    </ul>
+                    </li>
+                    <li><span>出库作业</span>
+                        <ul>
+                            <li><span><a
+                                    href="javascript:openTab('出库单制定','/page/outbound','icon-man')">出库单制定</a></span></li>
+                        </ul>
                     </li>
                 </ul>
             </li>

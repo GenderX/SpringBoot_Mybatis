@@ -66,6 +66,17 @@ public class CusController {
     }
 
     /**
+     * 不分页查询所有客户
+     * @return
+     */
+    @GetMapping("getAllCombo")
+    @ResponseBody
+    public Object getAllCombo(String Number, String Name) {
+        List<customer> customers = customersMapper.selectAllOrID(Number, Name);
+        return customers;
+    }
+
+    /**
      * 插入
      * @param customers
      * @return

@@ -56,7 +56,7 @@
         <table tableName="staff_type" domainObjectName="staff_type" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
         <table tableName="warehouse" domainObjectName="warehouse" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
 -->
-        <table tableName="inbound_details" domainObjectName="inbound_details" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
+        <table tableName="outbound_details" domainObjectName="outbound_details" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="true"></table>
 
     </context>
 </generatorConfiguration>

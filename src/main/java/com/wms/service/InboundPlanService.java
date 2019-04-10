@@ -107,6 +107,7 @@ public class InboundPlanService {
     public void finishDetails(String number) {
         detailsMapper.updateDate(number);
 
+
     }
 
     /**
@@ -127,4 +128,11 @@ public class InboundPlanService {
         }
 
     }
+
+    public Boolean isFinish(String number) {
+        inbound_master master = masterMapper.selectByPrimaryKey(number);
+        return master.getIsfinish();
+    }
+
+
 }

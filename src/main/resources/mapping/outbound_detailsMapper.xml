@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.wms.model.outbound_details" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="OutStockNumber" property="outstocknumber" jdbcType="CHAR" />
-    <result column="ProductNumber" property="productnumber" jdbcType="INTEGER" />
+    <result column="ProductNumber" property="productnumber" jdbcType="VARCHAR" />
     <result column="Amount" property="amount" jdbcType="INTEGER" />
     <result column="PlaceNumber" property="placenumber" jdbcType="INTEGER" />
   </resultMap>
@@ -24,7 +24,7 @@
   <insert id="insert" parameterType="com.wms.model.outbound_details" >
     insert into outbound_details (ID, OutStockNumber, ProductNumber, 
       Amount, PlaceNumber)
-    values (#{id,jdbcType=INTEGER}, #{outstocknumber,jdbcType=CHAR}, #{productnumber,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{outstocknumber,jdbcType=CHAR}, #{productnumber,jdbcType=VARCHAR}, 
       #{amount,jdbcType=INTEGER}, #{placenumber,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.wms.model.outbound_details" >
@@ -54,7 +54,7 @@
         #{outstocknumber,jdbcType=CHAR},
       </if>
       <if test="productnumber != null" >
-        #{productnumber,jdbcType=INTEGER},
+        #{productnumber,jdbcType=VARCHAR},
       </if>
       <if test="amount != null" >
         #{amount,jdbcType=INTEGER},
@@ -71,7 +71,7 @@
         OutStockNumber = #{outstocknumber,jdbcType=CHAR},
       </if>
       <if test="productnumber != null" >
-        ProductNumber = #{productnumber,jdbcType=INTEGER},
+        ProductNumber = #{productnumber,jdbcType=VARCHAR},
       </if>
       <if test="amount != null" >
         Amount = #{amount,jdbcType=INTEGER},
@@ -85,7 +85,7 @@
   <update id="updateByPrimaryKey" parameterType="com.wms.model.outbound_details" >
     update outbound_details
     set OutStockNumber = #{outstocknumber,jdbcType=CHAR},
-      ProductNumber = #{productnumber,jdbcType=INTEGER},
+      ProductNumber = #{productnumber,jdbcType=VARCHAR},
       Amount = #{amount,jdbcType=INTEGER},
       PlaceNumber = #{placenumber,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}

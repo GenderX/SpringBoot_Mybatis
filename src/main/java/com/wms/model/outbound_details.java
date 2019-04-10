@@ -1,11 +1,16 @@
 package com.wms.model;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+@Mapper
+@Repository
 public class outbound_details {
     private Integer id;
 
     private String outstocknumber;
 
-    private Integer productnumber;
+    private String productnumber;
 
     private Integer amount;
 
@@ -27,12 +32,12 @@ public class outbound_details {
         this.outstocknumber = outstocknumber == null ? null : outstocknumber.trim();
     }
 
-    public Integer getProductnumber() {
+    public String getProductnumber() {
         return productnumber;
     }
 
-    public void setProductnumber(Integer productnumber) {
-        this.productnumber = productnumber;
+    public void setProductnumber(String productnumber) {
+        this.productnumber = productnumber == null ? null : productnumber.trim();
     }
 
     public Integer getAmount() {
