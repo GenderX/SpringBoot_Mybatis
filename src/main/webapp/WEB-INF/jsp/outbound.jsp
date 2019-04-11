@@ -34,7 +34,6 @@
     function bindData() {
         $('#dg').datagrid({
             title: '出库单',
-            url: '/outbound/outboundPlan',
             pagination: true,
             singleSelect: true,
             rownumbers: true,
