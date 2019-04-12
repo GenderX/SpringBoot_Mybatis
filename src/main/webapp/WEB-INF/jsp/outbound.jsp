@@ -46,7 +46,7 @@
             columns: [[
 
                 {
-                    field: 'id', width: 225, title: '批属性编号',
+                    field: 'Invid', width: 225, title: '批属性编号',
 
                     editor: {
                         type: 'combogrid',

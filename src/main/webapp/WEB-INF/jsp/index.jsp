@@ -91,15 +91,17 @@
                             <li><span><a
                                     href="javascript:openTab('出库单制定','/page/outbound','icon-man')">出库单制定</a></span></li>
                         </ul>
+
+                        <ul>
+                            <li><span><a
+                                    href="javascript:openTab('出库作业','/page/outboundReview','icon-man')">出库作业</a></span></li>
+                        </ul>
                     </li>
                 </ul>
             </li>
             <li><span>File21</span></li>
         </ul>
 
-        <%--      <div style="width:200px;height:auto;border:1px solid #ccc;">
-                  <ul id="tt" class="easyui-tree" url="/static/tree_data.json" method="get"></ul>
-              </div>--%>
     </div>
     <div region="center">
         <div class="easyui-tabs" fit="true" border="false" id="tabs">

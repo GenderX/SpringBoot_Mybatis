@@ -30,7 +30,6 @@
     function bindData() {
         $('#dg').datagrid({
             title: '入库单',
-            url: '/inbound/inboundPlan',
             pagination: true,
             singleSelect: true,
             rownumbers: true,
