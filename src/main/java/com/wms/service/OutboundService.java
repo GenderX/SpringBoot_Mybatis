@@ -1,10 +1,7 @@
 package com.wms.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wms.mapper.outbound_detailsMapper;
-import com.wms.mapper.outbound_masterMapper;
-import com.wms.mapper.productMapper;
-import com.wms.mapper.warehouseMapper;
+import com.wms.mapper.*;
 import com.wms.model.*;
 import com.wms.utils.ExcelUtil;
 import com.wms.utils.UUIDGenerator;
@@ -32,6 +29,9 @@ public class OutboundService {
     @Autowired
     productMapper productMapper;
 
+    @Autowired
+    inventoryMapper inventoryMapper;
+
 
     String fileName=null;
 
@@ -47,7 +47,14 @@ public class OutboundService {
         return masterMapper.selectAll(number);
     }
 
-    public void savePlan(String effectRow, String customer, String recipient, String id) {
+    /**
+     * 制定出库计划单
+     * @param effectRow
+     * @param customer
+     * @param recipient
+     * @param id
+     */
+    public void savePlan(String effectRow, String customer, String recipient, String id) throws Exception {
         //保存主表
         outbound_master master = new outbound_master();
         master.setNumber(id);
@@ -62,6 +69,13 @@ public class OutboundService {
             outbound_details detail = new outbound_details();
             //后台获取SKU库内信息
             inventory inventory = inventoryService.selectById(vo.getInvid());
+            //出库数量校验
+            if (inventory.getAmount()<vo.getAmount()){
+                throw new Exception("库存行号‘"+inventory.getPlacenumber()+"’大于可出库数量！");
+            }
+            //减去SKU库存数量
+            inventory.setAmount(inventory.getAmount()-vo.getAmount());
+            inventoryMapper.updateByPrimaryKeySelective(inventory);
             detail.setProductnumber(inventory.getProductnumber());
             detail.setPlacenumber(inventory.getPlacenumber());
             detail.setOutstocknumber(id);
@@ -104,6 +118,7 @@ public class OutboundService {
         master.setNumber(number);
         master.setApprover(approver);
         master.setSender(deliverer);
+        master.setIsfinish(true);
         masterMapper.updateByPrimaryKeySelective(master);
     }
 
@@ -112,7 +127,5 @@ public class OutboundService {
         return outbound_master.getIsfinish();
     }
 
-    public void reduceInventory(String number) {
 
-    }
 }

@@ -163,10 +163,10 @@
             if (rsp) {
                 $dg.datagrid('acceptChanges');
                 bindData();
-                alert("出库单生成成功,单据编号："+rsp)
+                alert(rsp)
             }
-        }, "JSON").error(function () {
-            $.messager.alert("提示", "提交错误了！");
+        }, "JSON").error(function (rsp) {
+            alert(rsp.responseText);
         });
 
     }

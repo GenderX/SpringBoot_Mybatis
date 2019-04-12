@@ -35,8 +35,12 @@ public class OutboundController {
     @RequestMapping("/CommitBach")
     public Object CommitBach(String effectRow, String customer, String Recipient) {
         String id = UUIDGenerator.createID();
-        outboundService.savePlan(effectRow, customer, Recipient, id);
-        return id;
+        try {
+            outboundService.savePlan(effectRow, customer, Recipient, id);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        return "出库单制作完成，出库单编号为"+id;
     }
 
     /**
@@ -104,12 +108,11 @@ public class OutboundController {
         HashMap<String, Object> map = new HashMap<>();
         Boolean isFinish=outboundService.isFinish(number);
         if (isFinish){
-            map.put("errorMsg", "入库失败，当前单据已审核入库！！！！");
+            map.put("errorMsg", "出库失败，当前单据已审核出库！！！！");
             return map;
         }
         try {
             outboundService.finishMaster(number, approver, deliverer);
-            outboundService.reduceInventory(number);
         } catch (Exception e) {
             String errorMsg = e.getMessage();
             map.put("errorMsg", errorMsg);
