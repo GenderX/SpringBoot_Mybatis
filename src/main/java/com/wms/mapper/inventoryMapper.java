@@ -3,6 +3,7 @@ package com.wms.mapper;
 import com.wms.model.inventory;
 import com.wms.model.inventoryVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,6 +23,6 @@ public interface inventoryMapper {
 
     int updateByPrimaryKey(inventory record);
 
-    List<inventoryVO> getAll();
+    List<inventoryVO> getAll( @Param("Name") String Name);
 
 }

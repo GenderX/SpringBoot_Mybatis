@@ -82,8 +82,8 @@
 
                     <li><span>库内作业</span>
                     <ul>
-                        <li><span><a
-                                href="javascript:openTab('入库单制定','/page/inbound','icon-man')">入库单制定</a></span></li>
+                        <li><span><a href="javascript:openTab('入库单制定','/page/inbound','icon-man')">入库单制定</a></span></li>
+                        <li><span><a href="javascript:openTab('库存查询','/page/inventory','icon-man')">库存查询</a></span></li>
                     </ul>
                     </li>
                     <li><span>出库作业</span>

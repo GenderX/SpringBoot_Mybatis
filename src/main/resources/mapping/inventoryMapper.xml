@@ -21,12 +21,18 @@
         from inventory
         where ID = #{id,jdbcType=INTEGER}
     </select>
+
     <select id="getAll" resultType="com.wms.model.inventoryVO">
-   SELECT a.*,b.`Name` as productName
-    FROM `inventory` a
-   INNER JOIN product b
-   on a.ProductNumber=b.Number
-   and a.Amount>0
+   SELECT a.*,b.Name as productName
+    from inventory a
+   INNER JOIN product b    on a.ProductNumber=b.Number
+   where a.Amount>0
+
+        <if test="Name != null and Name!=''">
+            and b.Name like "%"#{Name}"%"
+        </if>
+
+
 
 
     </select>
