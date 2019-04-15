@@ -50,15 +50,15 @@
     <thead>
 
     <tr>
-        <th data-options="field:'ID',width:80">库存项编号</th>
-        <th data-options="field:'StoreHouseNumber',width:80">仓库编号</th>
-        <th data-options="field:'ProductNumber',width:80">产品编号</th>
-        <th data-options="field:'Name',width:180">产品名称</th>
-        <th data-options="field:'Amount',width:80">数量</th>
-        <th data-options="field:'AreaNumber',width:80">库区号</th>
-        <th data-options="field:'ShelfNumber',width:80">货架号</th>
-        <th data-options="field:'PlaceNumber',width:80">货位号</th>
-        <th data-options="field:'InStockTime',width:80">入库时间</th>
+        <th data-options="field:'id',width:80">库存项编号</th>
+        <th data-options="field:'storehousenumber',width:80">仓库编号</th>
+        <th data-options="field:'productnumber',width:80">产品编号</th>
+        <th data-options="field:'productName',width:180">产品名称</th>
+        <th data-options="field:'amount',width:80">数量</th>
+        <th data-options="field:'areanumber',width:80">库区号</th>
+        <th data-options="field:'shelfnumber',width:80">货架号</th>
+        <th data-options="field:'placenumber',width:80">货位号</th>
+        <th data-options="field:'instocktime',width:80">入库时间</th>
     </tr>
     </thead>
 </table>
