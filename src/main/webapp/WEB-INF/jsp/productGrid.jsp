@@ -106,20 +106,21 @@
        collapsible:true,
        url:'/product/getAll',
        method:'get',
+        fit:true,
        striped:true,
        toolbar:'#toolbar' "
 >
     <thead>
 
     <tr>
-        <th data-options="field:'number',width:80">产品编号</th>
-        <th data-options="field:'categorynumber',width:180,hidden:true">种类编号</th>
-        <th data-options="field:'categoryname',width:180">种类</th>
-        <th data-options="field:'barcode',width:180">条码</th>
-        <th data-options="field:'name',width:100,align:'left'">名称</th>
-        <th data-options="field:'spec',width:140,align:'left'">产品型号</th>
-        <th data-options="field:'price',width:100">价格</th>
-        <th data-options="field:'unit',width:120,align:'left'">单位</th>
+        <th data-options="field:'number'">产品编号</th>
+        <th data-options="field:'categorynumber'">种类编号</th>
+        <th data-options="field:'categoryname'">种 类</th>
+        <th data-options="field:'barcode'">条 码</th>
+        <th data-options="field:'name'">名 称</th>
+        <th data-options="field:'spec'">产品型号</th>
+        <th data-options="field:'price'">价 格</th>
+        <th data-options="field:'unit'">单 位</th>
     </tr>
     </thead>
 </table>

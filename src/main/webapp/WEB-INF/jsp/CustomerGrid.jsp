@@ -92,6 +92,7 @@
 <table id="dg" class="easyui-datagrid" title="客户列表" style="width:100%;height:auto"
        data-options="
        pagination:true,
+       fit:true,
        singleSelect:true,
        collapsible:true,
        url:'/customer/getAll',

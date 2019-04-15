@@ -102,6 +102,7 @@
 <table id="dg" class="easyui-datagrid" title="供应商列表" style="width:100%;height:auto"
        data-options="
        pagination:true,
+       fit:true,
        singleSelect:true,
        collapsible:true,
        url:'/supplier/getAll',
@@ -112,15 +113,15 @@
     <thead>
 
     <tr>
-        <th data-options="field:'number',width:80">供应商编号</th>
-        <th data-options="field:'name',width:180">供应商名称</th>
-        <th data-options="field:'contact',width:100,align:'left'">供应商联系人</th>
-        <th data-options="field:'address',width:140,align:'left'">供应商地址</th>
-        <th data-options="field:'postcode',width:100">供应商邮编</th>
-        <th data-options="field:'phone',width:120,align:'left'">供应商电话</th>
-        <th data-options="field:'fax',width:120,align:'center'">供应商传真</th>
-        <th data-options="field:'bank',width:140,align:'center'">供应商开户银行</th>
-        <th data-options="field:'account',width:140,align:'center'">供应商银行账号</th>
+        <th data-options="field:'number'">供应商编号</th>
+        <th data-options="field:'name'">供应商名称</th>
+        <th data-options="field:'contact'">供应商联系人</th>
+        <th data-options="field:'address'">供应商地址</th>
+        <th data-options="field:'postcode'">供应商邮编</th>
+        <th data-options="field:'phone'">供应商电话</th>
+        <th data-options="field:'fax'">供应商传真</th>
+        <th data-options="field:'bank'">供应商开户银行</th>
+        <th data-options="field:'account'">供应商银行账号</th>
 
     </tr>
     </thead>

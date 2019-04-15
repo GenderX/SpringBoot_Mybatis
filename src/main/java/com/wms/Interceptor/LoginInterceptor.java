@@ -1,4 +1,3 @@
-/*
 package com.wms.Interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -6,14 +5,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-*/
-/**
- * @author ：LiCan
- * @date ：Created in 2019/1/9 15:24
- * @description：${description}
- * @modified By：
- * @version: $version$
- *//*
+
 
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
@@ -29,4 +21,3 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     }
 }
-*/

@@ -1,4 +1,3 @@
-/*
 package com.wms.Config;
 
 import com.wms.Interceptor.LoginInterceptor;
@@ -7,14 +6,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistration
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-*/
-/**
- * @author ：LiCan
- * @date ：Created in 2019/1/9 15:31
- * @description：${description}
- * @modified By：
- * @version: $version$
- *//*
+
+
 
 @Configuration
 public class LoginConfiguration implements WebMvcConfigurer {
@@ -40,4 +33,3 @@ public class LoginConfiguration implements WebMvcConfigurer {
 
     }
 }
-*/

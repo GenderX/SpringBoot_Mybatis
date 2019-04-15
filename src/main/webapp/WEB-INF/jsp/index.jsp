@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>NorthWind主页</title>
+    <title>WMS主页</title>
 </head>
 <link rel="stylesheet" type="text/css" href="/easyui/themes/metro/easyui.css">
 <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
@@ -16,7 +16,16 @@
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
-    //加载标签到center
+    $(document).ready(function() {
+        var isRoot="<%=session.getAttribute("root")%>";
+        console.log(isRoot);
+        if (isRoot==false){
+            $("#rootFun").next().hide();
+        }
+    });
+
+
+        //加载标签到center
     function openTab(text, url, iconCls) {
         if ($("#tabs").tabs("exists", text)) {
             //如果已经存在，则使之处于选中的状态
@@ -37,14 +46,14 @@
 </script>
 <body>
 <div id="cc" class="easyui-layout" style="width:1800px;height:850px;">
-    <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
+    <div data-options="region:'north',title:'仓储管理系统',split:true" style="height:100px;"></div>
     <div data-options="region:'west',title:'菜单',split:true," style="width:200px;">
 
         <ul id="tt" class="easyui-tree">
             <li>
                 <span>Folder</span>
-                <ul>
-                    <li>
+
+                    <li id="rootFun">
                         <span>人员管理</span>
                         <ul>
                             <li><span><a
@@ -59,6 +68,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li><span>仓库基础资料</span>
                         <ul>
                             <li><span><a

@@ -24,7 +24,7 @@ import java.util.List;
 public class UserController {
     @Autowired
     userMapper userMapper;
-     @RequestMapping("/user/login")
+     @RequestMapping("/login")
     public String login(String UserName, String password, HttpServletRequest request){
          user user = userMapper.selectByPrimaryKey(UserName);
          if (user==null){
@@ -32,6 +32,10 @@ public class UserController {
          }
          if (password!=null&&password!=""&& user.getPassword().equals(password)){
              request.getSession().setAttribute("user",user);
+             request.getSession().setAttribute("root",false);
+             if (user.getUsername().equals("admin")){
+                 request.getSession().setAttribute("root",true);
+             }
              return "index";
          }
          return "login";
