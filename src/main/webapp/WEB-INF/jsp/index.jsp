@@ -12,8 +12,10 @@
 </head>
 <link rel="stylesheet" type="text/css" href="/easyui/themes/metro/easyui.css">
 <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.90so.net/ztree/3.5.40/css/zTreeStyle/zTreeStyle.css">
 <script type="text/javascript" src="/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="https://cdn.90so.net/ztree/3.5.40/js/jquery.ztree.core.min.js"></script>
 <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -48,69 +50,50 @@
 <div id="cc" class="easyui-layout" style="width:1800px;height:850px;">
     <div data-options="region:'north',title:'仓储管理系统',split:true" style="height:100px;"></div>
     <div data-options="region:'west',title:'菜单',split:true," style="width:200px;">
+            <ul id="treeDemo" class="ztree"></ul>
+        <SCRIPT type="text/javascript">
+            <!--
+            var setting = {	};
 
-        <ul id="tt" class="easyui-tree">
-            <li>
-                <span>Folder</span>
+            var zNodes =[
+                { name:"菜单", open:true,
+                    children: [
+                        { name:"人员管理",
+                            children: [
+                                { name:"客户管理",click:"javascript:openTab('客户管理','/page/CustomerGrid','icon-man')"},
+                                { name:"供应商管理",click:"javascript:openTab('供应商管理','/page/supplierGrid','icon-man')"},
+                                { name:"员工管理",click:"javascript:openTab('员工管理','/page/StaffGrid','icon-man')"},
+                                { name:"用户管理",click:"javascript:openTab('用户管理','/page/userGrid','icon-man')"}
+                            ]},
+                        { name:"仓库基础资料",
+                            children: [
+                                { name:"仓库规划",click:"javascript:openTab('仓库规划','/page/warehouseGrid','icon-man')"},
+                                { name:"供应商管理",click:"javascript:openTab('产品列表','/page/productGrid','icon-man')"},
+                            ]},
+                        { name:"入库作业", children:[
+                                { name:"入库单制定",click:"javascript:openTab('入库单制定','/page/inbound','icon-man'"},
+                                { name:"入库计划",click:"javascript:openTab('入库计划','/page/inboundReview','icon-man')"},
+                            ]},
+                        { name:"库内作业", children:[
+                                { name:"入库单制定",click:"javascript:openTab('入库单制定','/page/inbound','icon-man')"},
+                                { name:"库存查询",click:"javascript:openTab('库存查询','/page/inventory','icon-man')"},
+                            ]},
+                        { name:"出库作业", children:[
+                                { name:"入库单制定",click:"javascript:openTab('出库单制定','/page/outbound','icon-man')"},
+                                { name:"出库作业",click:"javascript:openTab('出库作业','/page/outboundReview','icon-man')"},
+                            ]}
+                    ]},
 
-                    <li id="rootFun">
-                        <span>人员管理</span>
-                        <ul>
-                            <li><span><a
-                                    href="javascript:openTab('客户管理','/page/CustomerGrid','icon-man')">客户管理</a></span>
-                            </li>
-                            <li><span><a
-                                    href="javascript:openTab('供应商管理','/page/supplierGrid','icon-man')">供应商管理</a></span>
-                            </li>
-                            <li><span><a href="javascript:openTab('员工管理','/page/StaffGrid','icon-man')">员工管理</a></span>
-                            </li>
-                            <li><span><a href="javascript:openTab('用户管理','/page/userGrid','icon-man')">用户管理</a></span>
-                            </li>
-                        </ul>
-                    </li>
 
-                    <li><span>仓库基础资料</span>
-                        <ul>
-                            <li><span><a
-                                    href="javascript:openTab('仓库规划','/page/warehouseGrid','icon-man')">仓库规划</a></span>
-                            </li>
-                            <li><span><a
-                                    href="javascript:openTab('产品列表','/page/productGrid','icon-man')">产品列表</a></span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><span>入库作业</span>
-                    <ul>
-                    <li><span><a
-                            href="javascript:openTab('入库单制定','/page/inbound','icon-man')">入库单制定</a></span>
-                    </li>
-                    <li><span><a
-                            href="javascript:openTab('入库计划','/page/inboundReview','icon-man')">入库计划</a></span>
-                    </li>
-                    </ul>
-                    </li>
+            ];
 
-                    <li><span>库内作业</span>
-                    <ul>
-                        <li><span><a href="javascript:openTab('入库单制定','/page/inbound','icon-man')">入库单制定</a></span></li>
-                        <li><span><a href="javascript:openTab('库存查询','/page/inventory','icon-man')">库存查询</a></span></li>
-                    </ul>
-                    </li>
-                    <li><span>出库作业</span>
-                        <ul>
-                            <li><span><a
-                                    href="javascript:openTab('出库单制定','/page/outbound','icon-man')">出库单制定</a></span></li>
-                        </ul>
+            $(document).ready(function(){
+                $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+            });
+            //-->
+        </SCRIPT>
 
-                        <ul>
-                            <li><span><a
-                                    href="javascript:openTab('出库作业','/page/outboundReview','icon-man')">出库作业</a></span></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><span>File21</span></li>
-        </ul>
+
 
     </div>
     <div region="center">
