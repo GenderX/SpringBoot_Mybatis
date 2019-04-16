@@ -53,6 +53,7 @@
                     children: [
                         {
                             name: "人员管理",
+                            open: true,
                             children: [
                                 {name: "客户管理", click: "javascript:openTab('客户管理','/page/CustomerGrid','icon-man')"},
                                 {name: "供应商管理", click: "javascript:openTab('供应商管理','/page/supplierGrid','icon-man')"},
@@ -62,26 +63,33 @@
                         },
                         {
                             name: "仓库基础资料",
+                            open: true,
                             children: [
                                 {name: "仓库规划", click: "javascript:openTab('仓库规划','/page/warehouseGrid','icon-man')"},
                                 {name: "供应商管理", click: "javascript:openTab('产品列表','/page/productGrid','icon-man')"},
                             ]
                         },
                         {
-                            name: "入库作业", children: [
-                                {name: "入库单制定", click: "javascript:openTab('入库单制定','/page/inbound','icon-man'"},
+                            name: "入库作业",
+                            open: true,
+                            children: [
+                                {name: "入库单制定", click: "javascript:openTab('入库单制定','/page/inbound','icon-man')"},
                                 {name: "入库计划", click: "javascript:openTab('入库计划','/page/inboundReview','icon-man')"},
                             ]
                         },
                         {
-                            name: "库内作业", children: [
-                                {name: "入库单制定", click: "javascript:openTab('入库单制定','/page/inbound','icon-man')"},
+                            name: "库内作业",
+                            open: true,
+                            children: [
+
                                 {name: "库存查询", click: "javascript:openTab('库存查询','/page/inventory','icon-man')"},
                             ]
                         },
                         {
-                            name: "出库作业", children: [
-                                {name: "入库单制定", click: "javascript:openTab('出库单制定','/page/outbound','icon-man')"},
+                            name: "出库作业",
+                            open: true,
+                            children: [
+                                {name: "出库单制定", click: "javascript:openTab('出库单制定','/page/outbound','icon-man')"},
                                 {name: "出库作业", click: "javascript:openTab('出库作业','/page/outboundReview','icon-man')"},
                             ]
                         }
