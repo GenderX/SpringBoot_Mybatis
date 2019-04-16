@@ -42,7 +42,7 @@
        pagination:true,
        singleSelect:true,
        collapsible:true,
-       url:'/inventory/getAllCombo',
+       url:'/inventory/getAll',
        method:'get',
        striped:true,
        toolbar:'#toolbar' "
