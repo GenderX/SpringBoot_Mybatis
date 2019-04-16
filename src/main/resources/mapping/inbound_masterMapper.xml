@@ -22,10 +22,10 @@
     where Number = #{number,jdbcType=CHAR}
   </select>
     <select id="selectByNum" resultType="com.wms.model.inboundVO">
-      select a.*,c2.`Name` as suppliername,c2.Name as recipientname
-      FROM outbound_master a
-      left join customer c2 on a.CustomerNumber = c2.Number
-      left join staff s on a.Recipient = s.Number
+      select a.*,s.`Name` as suppliername,s2.Name as recipientname
+      FROM inbound_master a
+      inner join supplier s on a.SupplierNumber = s.Number
+      inner join staff s2 on a.Recipient = s2.Number
       <where>
         <if test="number!=null and number!=''">
           and a.Number=#{number}
