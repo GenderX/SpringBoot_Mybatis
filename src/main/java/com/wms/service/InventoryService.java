@@ -14,8 +14,8 @@ import java.util.List;
 public class InventoryService {
     @Autowired
     inventoryMapper mapper ;
-    public List<inventoryVO> getAllCombo( String Name) {
-     return  mapper.getAll(Name);
+    public List<inventoryVO> getAllCombo() {
+     return  mapper.getAll();
     }
 
     public inventory selectById(Integer id) {
