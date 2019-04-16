@@ -25,6 +25,14 @@ import java.util.List;
 public class UserController {
     @Autowired
     userMapper userMapper;
+
+    /**
+     * 登录
+     * @param UserName 用户名
+     * @param password 密码
+     * @param request httprequest
+     * @return index.jsp
+     */
      @RequestMapping("/login")
     public String login(String UserName, String password, HttpServletRequest request){
          user user = userMapper.selectByPrimaryKey(UserName);
@@ -42,6 +50,13 @@ public class UserController {
          return "login";
      }
 
+    /**
+     * 查询所有用户
+     * @param username
+     * @param page
+     * @param rows
+     * @return
+     */
     @RequestMapping("/selectAll")
     @ResponseBody
     public Object selectByPrimaryKey(String username,int page, int rows) {
@@ -50,6 +65,11 @@ public class UserController {
         return data;
     }
 
+    /**
+     * 清除所有session并登出
+     * @param request
+     * @return
+     */
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request){
         Enumeration em = request.getSession().getAttributeNames();
