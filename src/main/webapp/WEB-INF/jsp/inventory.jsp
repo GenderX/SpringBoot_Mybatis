@@ -51,8 +51,7 @@
     <thead>
 
     <tr>
-        <th data-options="field:'id'">库存项编号</th>
-        <th data-options="field:'storehousenumber'">仓库编号</th>
+        <th data-options="field:'id'">库存批号</th>
         <th data-options="field:'productnumber'">产品编号</th>
         <th data-options="field:'productName'">产品名称</th>
         <th data-options="field:'amount'">数量</th>
@@ -74,10 +73,8 @@
     <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
         <h3>库存信息</h3>
         <div class="div-leftform">
-            <div style="margin-bottom:10px"><input name="ID" class="easyui-textbox" required="true" label="库存项编号:"
+            <div style="margin-bottom:10px"><input name="ID" class="easyui-textbox" required="true" label="库存批号:"
                                                    style="width:100%"></div>
-            <div style="margin-bottom:10px"><input name="StoreHouseNumber" class="easyui-textbox" required="true"
-                                                   label="仓库编号:" style="width:100%"></div>
             <div style="margin-bottom:10px"><input name="ProductNumber" class="easyui-textbox" required="true"
                                                    label="产品编号:" style="width:100%"></div>
             <div style="margin-bottom:10px"><input name="Name" class="easyui-textbox" required="true" label="产品名称:"
