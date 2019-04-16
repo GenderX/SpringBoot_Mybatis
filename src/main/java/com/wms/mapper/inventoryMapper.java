@@ -24,4 +24,6 @@ public interface inventoryMapper {
 
     List<inventoryVO> getAll();
 
+    List<inventoryVO> getAllSel(String Name);
+
 }

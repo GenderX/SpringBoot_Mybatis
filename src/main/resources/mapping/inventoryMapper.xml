@@ -28,6 +28,18 @@
    left JOIN product b   on a.ProductNumber=b.Number
    where a.Amount>0
     </select>
+
+    <select id="getAllSel" resultType="com.wms.model.inventoryVO">
+        SELECT a.*,b.Name as productName
+        from inventory a
+        INNER JOIN product b    on a.ProductNumber=b.Number
+        where a.Amount>0
+
+        <if test="Name != null and Name!=''">
+            and b.Name like "%"#{Name}"%"
+        </if>
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from inventory
     where ID = #{id,jdbcType=INTEGER}
