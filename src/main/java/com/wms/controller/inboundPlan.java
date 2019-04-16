@@ -34,7 +34,6 @@ public class inboundPlan {
                              String effectRow, String supplier, String Recipient) {
         List<inbound_details> detailsList = JSONObject.parseArray(effectRow, inbound_details.class);
         String id = inboundPlanService.makeInboundPlan(detailsList, supplier, Recipient);
-
         return id;
 
     }

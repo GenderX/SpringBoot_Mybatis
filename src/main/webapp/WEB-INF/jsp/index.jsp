@@ -49,32 +49,32 @@
             var setting = {};
             var zNodes = [
                 {
-                    name: "菜单", open: true,
+                    name: "菜单", open: true,icon:"/images/diy/1_close.png",
                     children: [
                         {
                             name: "人员管理",
                             open: true,
                             children: [
-                                {name: "客户管理", click: "javascript:openTab('客户管理','/page/CustomerGrid','icon-man')"},
-                                {name: "供应商管理", click: "javascript:openTab('供应商管理','/page/supplierGrid','icon-man')"},
-                                {name: "员工管理", click: "javascript:openTab('员工管理','/page/StaffGrid','icon-man')"},
-                                {name: "用户管理", click: "javascript:openTab('用户管理','/page/userGrid','icon-man')"}
+                                {name: "客户管理", click: "javascript:openTab('客户管理','/page/CustomerGrid','icon-man')",icon:"/images/diy/2.png",},
+                                {name: "供应商管理", click: "javascript:openTab('供应商管理','/page/supplierGrid','icon-man')",icon:"/images/diy/2.png",},
+                                {name: "员工管理", click: "javascript:openTab('员工管理','/page/StaffGrid','icon-man')",icon:"/images/diy/2.png",},
+                                {name: "用户管理", click: "javascript:openTab('用户管理','/page/userGrid','icon-man')",icon:"/images/diy/2.png",}
                             ]
                         },
                         {
                             name: "仓库基础资料",
                             open: true,
                             children: [
-                                {name: "仓库规划", click: "javascript:openTab('仓库规划','/page/warehouseGrid','icon-man')"},
-                                {name: "供应商管理", click: "javascript:openTab('产品列表','/page/productGrid','icon-man')"},
+                                {name: "仓库规划", click: "javascript:openTab('仓库规划','/page/warehouseGrid','icon-man')",icon:"/images/diy/3.png",},
+                                {name: "供应商管理", click: "javascript:openTab('产品列表','/page/productGrid','icon-man')",icon:"/images/diy/3.png",},
                             ]
                         },
                         {
                             name: "入库作业",
                             open: true,
                             children: [
-                                {name: "入库单制定", click: "javascript:openTab('入库单制定','/page/inbound','icon-man')"},
-                                {name: "入库计划", click: "javascript:openTab('入库计划','/page/inboundReview','icon-man')"},
+                                {name: "入库单制定", click: "javascript:openTab('入库单制定','/page/inbound','icon-man')",icon:"/images/diy/7.png",},
+                                {name: "入库计划", click: "javascript:openTab('入库计划','/page/inboundReview','icon-man')",icon:"/images/diy/6.png",},
                             ]
                         },
                         {
@@ -82,15 +82,15 @@
                             open: true,
                             children: [
 
-                                {name: "库存查询", click: "javascript:openTab('库存查询','/page/inventory','icon-man')"},
+                                {name: "库存查询", click: "javascript:openTab('库存查询','/page/inventory','icon-man')",icon:"/images/diy/8.png",},
                             ]
                         },
                         {
                             name: "出库作业",
                             open: true,
                             children: [
-                                {name: "出库单制定", click: "javascript:openTab('出库单制定','/page/outbound','icon-man')"},
-                                {name: "出库作业", click: "javascript:openTab('出库作业','/page/outboundReview','icon-man')"},
+                                {name: "出库单制定", click: "javascript:openTab('出库单制定','/page/outbound','icon-man')",icon:"/images/diy/7.png",},
+                                {name: "出库作业", click: "javascript:openTab('出库作业','/page/outboundReview','icon-man')",icon:"/images/diy/6.png",},
                             ]
                         }
                     ]
