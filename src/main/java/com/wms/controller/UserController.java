@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -49,41 +50,15 @@ public class UserController {
         return data;
     }
 
-    @RequestMapping("/insert")
-    @ResponseBody
-    public int insert(user record){
-        int data = userMapper.insert(record);
-        return data;
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request){
+        Enumeration em = request.getSession().getAttributeNames();
+        while(em.hasMoreElements()){
+            request.getSession().removeAttribute(em.nextElement().toString());
+        }
+        return "login";
+
     }
 
-    @RequestMapping("/insertSelective")
-    @ResponseBody
-    public int insertSelective(user record){
-        int data = userMapper.insertSelective(record);
-        return data;
-    }
 
-    @RequestMapping("/updateByPrimaryKeySelective")
-    @ResponseBody
-    public int updateByPrimaryKeySelective(user record){
-        int data = userMapper.updateByPrimaryKeySelective(record);
-
-        return data;
-    }
-
-    @RequestMapping("/updateByPrimaryKey")
-    @ResponseBody
-    public int updateByPrimaryKey(user record){
-        int data = userMapper.updateByPrimaryKey(record);
-
-        return data;
-    }
-
-    @RequestMapping("/deleteByPrimaryKey")
-    @ResponseBody
-    public int deleteByPrimaryKey(String username) {
-        int data = userMapper.deleteByPrimaryKey(username);
-
-        return data;
-    }
 }
