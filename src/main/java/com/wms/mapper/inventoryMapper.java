@@ -2,6 +2,7 @@ package com.wms.mapper;
 
 import com.wms.model.inventory;
 import com.wms.model.inventoryVO;
+import com.wms.model.weeklyAmountBO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -25,5 +26,9 @@ public interface inventoryMapper {
     List<inventoryVO> getAll();
 
     List<inventoryVO> getAllSel(String Name);
+
+    List<weeklyAmountBO> selectWeeklyInboundAmount();
+
+    List<weeklyAmountBO> selectWeeklyOutboundAmount();
 
 }

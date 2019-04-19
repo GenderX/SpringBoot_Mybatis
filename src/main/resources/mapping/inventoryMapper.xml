@@ -32,12 +32,39 @@
     <select id="getAllSel" resultType="com.wms.model.inventoryVO">
         SELECT a.*,b.Name as productName
         from inventory a
-        INNER JOIN product b    on a.ProductNumber=b.Number
+        INNER JOIN product b on a.ProductNumber=b.Number
         where a.Amount>0
 
         <if test="Name != null and Name!=''">
             and b.Name like "%"#{Name}"%"
         </if>
+    </select>
+    <select id="selectWeeklyInboundAmount" resultType="com.wms.model.weeklyAmountBO">
+        SELECT
+	date_format( CompleteTime, '%Y-%m-%d' ) AS date,
+	DAYOFWEEK( CompleteTime ) - 1 AS weekday,
+	SUM( Amount ) AS Amount
+    FROM
+	inbound_details
+     WHERE
+	YEARWEEK( date_format( CompleteTime, '%Y-%m-%d' ) ) = YEARWEEK( now( ) )
+    GROUP BY
+	date_format( CompleteTime, '%Y-%m-%d' )
+
+    </select>
+    <select id="selectWeeklyOutboundAmount" resultType="com.wms.model.weeklyAmountBO">
+        SELECT
+	date_format( m.CompleteTime, '%Y-%m-%d' ) AS date,
+	DAYOFWEEK( m.CompleteTime ) - 1 AS weekday,
+	SUM( d.Amount ) AS Amount
+FROM
+	outbound_details d
+	INNER JOIN outbound_master	m
+	on d.OutStockNumber=m.Number
+WHERE
+	YEARWEEK( date_format( m.CompleteTime, '%Y-%m-%d' ) ) = YEARWEEK( now( ) )
+GROUP BY
+	date_format( m.CompleteTime, '%Y-%m-%d' )
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
