@@ -4,6 +4,7 @@ import com.wms.model.inventory;
 import com.wms.model.inventoryVO;
 import com.wms.model.weeklyAmountBO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public interface inventoryMapper {
 
     List<inventoryVO> getAll();
 
-    List<inventoryVO> getAllSel(String Name);
+    List<inventoryVO> getAllSel(@Param("Name") String Name);
 
     List<weeklyAmountBO> selectWeeklyInboundAmount();
 
