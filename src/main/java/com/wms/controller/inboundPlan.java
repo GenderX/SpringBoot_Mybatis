@@ -35,7 +35,6 @@ public class inboundPlan {
         List<inbound_details> detailsList = JSONObject.parseArray(effectRow, inbound_details.class);
         String id = inboundPlanService.makeInboundPlan(detailsList, supplier, Recipient);
         return id;
-
     }
 
     /**
@@ -103,7 +102,7 @@ public class inboundPlan {
         HashMap<String, Object> map = new HashMap<>();
         Boolean isFinish=inboundPlanService.isFinish(number);
         if (isFinish){
-            map.put("errorMsg", "入库失败，当前单据已审核入库！！！！");
+            map.put("errorMsg", "入库失败，当前单据已审核入库");
             return map;
         }
         try {

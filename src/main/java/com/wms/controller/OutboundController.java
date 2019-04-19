@@ -103,6 +103,14 @@ public class OutboundController {
         }
     }
 
+    /**
+     * 完成出库任务
+     * @param number
+     * @param approver
+     * @param deliverer
+     * @return
+     */
+
     @RequestMapping("/done")
     public Object done(String number,String approver,String deliverer  ){
         HashMap<String, Object> map = new HashMap<>();

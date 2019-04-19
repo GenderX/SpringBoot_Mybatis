@@ -29,7 +29,6 @@ public class InventoryController {
     public Object getAllInventory(String Name,int page, int rows){
         Page<inventoryVO> inventoryVO = PageHelper.startPage(page, rows);
         List<inventoryVO> inventory = mapper.getAllSel(Name);
-
         HashMap<String, Object> data = new HashMap<>();
         data.put("rows", inventory);
         data.put("total", inventoryVO.getTotal());

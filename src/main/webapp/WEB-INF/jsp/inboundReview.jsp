@@ -106,13 +106,13 @@
         <th data-options="field:'number',width:180">入库编号</th>
         <th data-options="field:'suppliernumber',width:180,hidden:true">种类编号</th>
         <th data-options="field:'suppliername',width:80">供应商</th>
-        <th data-options="field:'createtime',width:180">创建时间</th>
+        <th data-opions="field:'createtime',width:180">创建时间</th>
         <th data-options="field:'completetime',width:180">完成时间</th>
         <th data-options="field:'recipient',width:100,hidden:true">接收人ID</th>
         <th data-options="field:'recipientname',width:100">接收人</th>
         <th data-options="field:'isfinish',formatter:isFinish,width:120,align:'left'">是否完成</th>
         <th data-options="field:'_operate',width:80,align:'center',formatter:formatOper">下载入库单</th>
-    </tr>
+    </tr>t
     </thead>
 </table>
 <div id="toolbar">

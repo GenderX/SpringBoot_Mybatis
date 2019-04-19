@@ -66,7 +66,7 @@
                             open: true,
                             children: [
                                 {name: "仓库规划", click: "javascript:openTab('仓库规划','/page/warehouseGrid','icon-man')",icon:"/images/diy/3.png",},
-                                {name: "供应商管理", click: "javascript:openTab('产品列表','/page/productGrid','icon-man')",icon:"/images/diy/3.png",},
+                                {name: "产品列表", click: "javascript:openTab('产品列表','/page/productGrid','icon-man')",icon:"/images/diy/3.png",},
                             ]
                         },
                         {

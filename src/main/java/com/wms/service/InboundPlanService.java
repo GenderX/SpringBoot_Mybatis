@@ -71,19 +71,21 @@ public class InboundPlanService {
         HSSFWorkbook wb = ExcelUtil.getHSSFWorkbook(sheetName, title, content, null);
         return wb;
     }
-    public String getFileName(){
+
+    public String getFileName() {
         return fileName;
     }
 
     public List<inboundVO> getAll(String number) {
-      List<inboundVO> list=  masterMapper.selectByNum(number);
-      return list;
+        List<inboundVO> list = masterMapper.selectByNum(number);
+        return list;
     }
 
     /**
      * 插入主表完成参数
-     * @param number 入库单号
-     * @param approver 审核人号
+     *
+     * @param number    入库单号
+     * @param approver  审核人号
      * @param deliverer 送货人号
      * @return
      */
@@ -101,6 +103,7 @@ public class InboundPlanService {
 
     /**
      * 从表入库完成流程
+     *
      * @param number
      */
     @Transactional(rollbackFor = Exception.class)
@@ -112,6 +115,7 @@ public class InboundPlanService {
 
     /**
      * 入库单数据写入库存表
+     *
      * @param number
      */
     @Transactional(rollbackFor = Exception.class)
@@ -119,12 +123,12 @@ public class InboundPlanService {
         List<inbound_details> detailsList = detailsMapper.selectByInStockNumber(number);
         for (inbound_details details : detailsList) {
             inventory inventory = new inventory();
-         inventory.setStorehousenumber(details.getStorehousenumber());
-         inventory.setProductnumber(details.getProductnumber());
-         inventory.setAmount(details.getAmount());
-         inventory.setPlacenumber(details.getStorehousenumber());
-         inventory.setInstocktime(new Date());
-         inventoryMapper.insert(inventory);
+            inventory.setStorehousenumber(details.getStorehousenumber());
+            inventory.setProductnumber(details.getProductnumber());
+            inventory.setAmount(details.getAmount());
+            inventory.setPlacenumber(details.getStorehousenumber());
+            inventory.setInstocktime(new Date());
+            inventoryMapper.insert(inventory);
         }
 
     }

@@ -119,6 +119,7 @@ public class OutboundService {
         master.setApprover(approver);
         master.setSender(deliverer);
         master.setIsfinish(true);
+        master.setCompletetime(new Date());
         masterMapper.updateByPrimaryKeySelective(master);
     }
 

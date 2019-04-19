@@ -143,13 +143,13 @@
         <h3>产品信息</h3>
         <div class="div-leftform">
             <div style="margin-bottom:10px">
-                <input name="number" class="easyui-textbox"  label="产品编号:" readonly="readonly" style="width:100%">
+                <input name="number" class="easyui-textbox" label="产品编号:" readonly="readonly" style="width:100%">
             </div>
             <div style="margin-bottom:10px">
                 <input name="name" class="easyui-textbox" required="true" label="产品名:" style="width:100%">
             </div>
             <div style="margin-bottom:10px">
-                <input label="职位：" id="categorynumber" name="categorynumber" class="easyui-combobox" data-options="
+                <input label="产品类别：" id="categorynumber" name="categorynumber" class="easyui-combobox" data-options="
          valueField: 'number', textField: 'name',
          url: '/product/getCategorynumber'"/>
                 <%--<input name="categoryname" class="easyui-textbox" label="分类:" style="width:100%">--%>
