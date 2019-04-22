@@ -126,10 +126,13 @@
             <div title="首页" data-options="iconCls:'icon-help'">
                 <div align="center" style="padding-top: 100px">
                     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-                    <div id="main" style="width: 600px;height:400px;"></div>
+                    <div id="main" style="width: 600px;height:400px;float: left;"></div>
+                    <div id="pie" style="width: 400px;height:400px;float: right;"></div>
                     <script type="text/javascript">
                         //图表
                         var psLineChar = echarts.init(document.getElementById('main'));
+                        var pie = echarts.init(document.getElementById('pie'));
+
                         //查询
                         function loadDrugs() {
                             psLineChar.clear();
@@ -144,8 +147,24 @@
                                 }
                             });
                         }
+                        function loadPie() {
+                            pie.clear();
+                            pie.showLoading({text: '正在努力的读取数据中...'});
+                            $.getJSON('/charts/getPie', function (data) {
+                                if (data) {
+                                    console.log(data)
+                                    pie.setOption(data);
+                                    pie.hideLoading();
+                                } else {
+                                    alert('提示', data.msg);
+                                }
+                            });
+                        }
+                        loadPie();
+
                         //载入图表
                         loadDrugs();
+
                     </script>
                 </div>
             </div>

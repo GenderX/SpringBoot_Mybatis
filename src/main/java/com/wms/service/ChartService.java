@@ -1,6 +1,7 @@
 package com.wms.service;
 
 import com.wms.mapper.inventoryMapper;
+import com.wms.model.WHPieChartBO;
 import com.wms.model.weeklyAmountBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,8 @@ public class ChartService {
 
     public List<weeklyAmountBO> selectWeeklyOutboundAmount() {
         return IM.selectWeeklyOutboundAmount();
+    }
+    public List<WHPieChartBO> selectWHPieChartBO(){
+        return IM.selectWHPieChartBO();
     }
 }

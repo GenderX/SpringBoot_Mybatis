@@ -66,6 +66,14 @@ WHERE
 GROUP BY
 	date_format( m.CompleteTime, '%Y-%m-%d' )
     </select>
+    <select id="selectWHPieChartBO" resultType="com.wms.model.WHPieChartBO">
+select i.StoreHouseNumber,SUM(Amount) as Amount,w.`Name` as `Name`
+from inventory i
+inner join warehouse w
+on i.StoreHouseNumber=w.Number
+GROUP BY StoreHouseNumber
+
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from inventory
