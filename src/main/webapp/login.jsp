@@ -1,7 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Purple_loginform Website Template | Home :: w3layouts</title>
+    <title>WMS Login</title>
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -32,7 +33,7 @@
 <div class="message warning">
     <div class="inset">
         <div class="login-head">
-            <h1>Login Form</h1>
+            <h1>登录</h1>
             <div class="alert-close"></div>
         </div>
         <form action="<%=request.getContextPath()%>/user/login" method="post">
@@ -48,7 +49,6 @@
             <div class="clear"></div>
             <div class="submit">
                 <input type="submit"  value="Sign in">
-                <h4><a href="#">Lost your Password ?</a></h4>
                 <div class="clear"></div>
             </div>
 
@@ -59,9 +59,7 @@
 <div class="clear"></div>
 <!--- footer --->
 <div class="footer">
-    <p>Copyright &copy; 2014.</p>
-    <p>Copyright &copy; 2014.</p>
-    <p>Copyright &copy; 2014.</p>
+    <p>Copyright &copy; JHUN @LiCan 2019.</p>
 </div>
 
 </body>
