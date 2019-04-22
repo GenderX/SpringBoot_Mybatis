@@ -27,7 +27,10 @@ public class ChartController {
     @Autowired
     ChartService chartService;
 
-
+    /**
+     * 生成柱状图
+     * @return
+     */
     @RequestMapping("/getTest")
     public Object test() {
         // 创建Option
@@ -89,6 +92,10 @@ public class ChartController {
         return option.toString();
     }
 
+    /**
+     * 生成Pie图
+     * @return
+     */
     @RequestMapping("/getPie")
     public Object getPie(){
 

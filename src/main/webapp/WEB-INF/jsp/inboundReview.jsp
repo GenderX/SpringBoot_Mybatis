@@ -103,7 +103,7 @@
     <thead>
 
     <tr>
-        <th data-options="field:'number',width:80">入库编号</th>
+        <th data-options="field:'number',width:200">入库编号</th>
         <th data-options="field:'suppliernumber',width:180,hidden:true">种类编号</th>
         <th data-options="field:'suppliername',width:180">供应商</th>
         <th data-options="field:'createtime',width:180">创建时间</th>

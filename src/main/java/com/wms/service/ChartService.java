@@ -22,7 +22,8 @@ public class ChartService {
     public List<weeklyAmountBO> selectWeeklyOutboundAmount() {
         return IM.selectWeeklyOutboundAmount();
     }
-    public List<WHPieChartBO> selectWHPieChartBO(){
+
+    public List<WHPieChartBO> selectWHPieChartBO() {
         return IM.selectWHPieChartBO();
     }
 }

@@ -29,9 +29,25 @@ public interface inventoryMapper {
 
     List<inventoryVO> getAllSel(@Param("Name") String Name);
 
+    /**
+     * 查询本周七天每天的入库数量
+     *
+     * @return weeklyAmountBO的List
+     */
     List<weeklyAmountBO> selectWeeklyInboundAmount();
 
+    /**
+     * 查询本周七天每天的出库数量
+     *
+     * @return weeklyAmountBO的list
+     */
     List<weeklyAmountBO> selectWeeklyOutboundAmount();
+
+    /**
+     * 查询库位库存数量
+     *
+     * @return WHPieChartBO的list
+     */
     List<WHPieChartBO> selectWHPieChartBO();
 
 }

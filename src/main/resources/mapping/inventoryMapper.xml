@@ -53,7 +53,7 @@
 
     </select>
     <select id="selectWeeklyOutboundAmount" resultType="com.wms.model.weeklyAmountBO">
-        SELECT
+SELECT
 	date_format( m.CompleteTime, '%Y-%m-%d' ) AS date,
 	DAYOFWEEK( m.CompleteTime ) - 1 AS weekday,
 	SUM( d.Amount ) AS Amount

@@ -27,12 +27,13 @@ public class WarehouseController {
 
     /**
      * 不分页查询库位
+     *
      * @param Number
      * @param Name
      * @return
      */
     @RequestMapping("/getAllCombo")
-    public Object getAll( String Number, String Name) {
+    public Object getAll(String Number, String Name) {
         List<warehouse> list = warehouseService.getAll(Number, Name);
         return list;
     }

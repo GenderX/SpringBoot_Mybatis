@@ -18,15 +18,24 @@ public class InventoryController {
     @Autowired
     InventoryService inventoryService;
     @Autowired
-    inventoryMapper mapper ;
+    inventoryMapper mapper;
+
     @RequestMapping("/getAllCombo")
-    public Object getAllInventory(){
+    public Object getAllInventory() {
         List<inventoryVO> data = inventoryService.getAllCombo();
         return data;
     }
 
+    /**
+     * 获取所有库存
+     *
+     * @param Name SKU 名
+     * @param page 当前页
+     * @param rows 当前页条数
+     * @return
+     */
     @RequestMapping("/getAll")
-    public Object getAllInventory(String Name,int page, int rows){
+    public Object getAllInventory(String Name, int page, int rows) {
         Page<inventoryVO> inventoryVO = PageHelper.startPage(page, rows);
         List<inventoryVO> inventory = mapper.getAllSel(Name);
         HashMap<String, Object> data = new HashMap<>();
