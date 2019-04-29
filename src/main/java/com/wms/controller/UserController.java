@@ -110,7 +110,7 @@ public class UserController {
     public Object deleteByPrimaryKey(String username){
 
         HashMap<String, Object> map = new HashMap<>();
-        if (username == "admin") {
+        if (username.equals("admin") ) {
             String errorMes = "删除失败";
             map.put("errorMsg", errorMes);
         }else {
