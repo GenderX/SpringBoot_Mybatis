@@ -30,6 +30,7 @@ public class LoginConfiguration implements WebMvcConfigurer {
         loginRegistry.excludePathPatterns("*.js");
         loginRegistry.excludePathPatterns("/images/*.jpg");
         loginRegistry.excludePathPatterns("/images/*.png");
+        loginRegistry.excludePathPatterns("/css/style.css");
 
 
     }
