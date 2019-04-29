@@ -1,5 +1,6 @@
 package com.wms.service;
 
+import com.wms.mapper.staffMapper;
 import com.wms.mapper.userMapper;
 import com.wms.model.user;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,11 @@ public class userService {
     }
 
     public int insert(user record){
-        int data = mapper.insert(record);
-
-        return data;
+        int insert = mapper.insert(record);
+        return insert;
     }
+
+
 
     public int insertSelective(user record){
         int data = mapper.insertSelective(record);

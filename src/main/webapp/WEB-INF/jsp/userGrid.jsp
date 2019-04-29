@@ -69,7 +69,7 @@
         if (row) {
             $('#dlg').dialog('open').dialog('setTitle', '编辑用户');
             $('#fm').form('load', row);
-            url = '/user/updateByPrimaryKey?username=' + row.username;
+            url = '/user/updateByPrimaryKey';
         }
     }
 
