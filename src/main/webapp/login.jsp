@@ -59,7 +59,6 @@
 <div class="clear"></div>
 <!--- footer --->
 <div class="footer">
-    <p>Copyright &copy; JHUN @LiCan 2019.</p>
 </div>
 
 </body>
