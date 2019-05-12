@@ -30,4 +30,12 @@ public class weeklyAmountBO {
         Amount = amount;
     }
 
+    @Override
+    public String toString() {
+        return "weeklyAmountBO{" +
+                "date=" + date +
+                ", weekday=" + weekday +
+                ", Amount=" + Amount +
+                '}';
+    }
 }

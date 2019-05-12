@@ -33,6 +33,11 @@ public interface inventoryMapper {
      * 查询本周七天每天的入库数量
      *
      * @return weeklyAmountBO的List
+     * +------------+---------+--------+
+     * | date       | weekday | Amount |
+     * +------------+---------+--------+
+     * | 2019-04-22 |       1 |    900 |
+     * +------------+---------+--------+
      */
     List<weeklyAmountBO> selectWeeklyInboundAmount();
 

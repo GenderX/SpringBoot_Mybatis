@@ -2,7 +2,6 @@ package com.wms.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.sun.net.httpserver.Authenticator;
 import com.wms.mapper.userMapper;
 import com.wms.model.user;
 import com.wms.service.userService;
@@ -115,8 +114,10 @@ public class UserController {
             map.put("errorMsg", errorMes);
         }else {
             userService.deleteByPrimaryKey(username);
+            map.put("success", true);
         }
-        map.put("success", true);
+        map.put("success", false);
+
         return map;
     }
 
