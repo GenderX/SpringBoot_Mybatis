@@ -45,7 +45,7 @@
                         if (result.success) {
                             $('#dg').datagrid('reload');	// reload the user data
                         } else {
-                            $.messager.show({	// show error message
+                            $.messager.alert({	// show error message
                                 title: 'Error',
                                 msg: result.errorMsg
                             });
@@ -67,6 +67,7 @@
     function editUser() {
         var row = $('#dg').datagrid('getSelected');
         if (row) {
+            $("#editInput").attr("readOnly",true);
             $('#dlg').dialog('open').dialog('setTitle', '编辑用户');
             $('#fm').form('load', row);
             url = '/user/updateByPrimaryKey';
@@ -116,7 +117,6 @@
         <th data-options="field:'password',width:180">用户密码</th>
 
 
-
     </tr>
     </thead>
 </table>
@@ -137,13 +137,16 @@
     <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
         <h3>用户信息</h3>
         <div style="margin-bottom:10px">
-            <input name="username" class="easyui-textbox" required="true" label="用户名称:" style="width:100%">
+            <input id="editInput" name="username" class="easyui-textbox" required="true" label="用户名称:" style="width:100%">
         </div>
         <div style="margin-bottom:10px">
             <input name="password" class="easyui-textbox" required="true" label="密码:" style="width:100%">
         </div>
     </form>
 </div>
+
+
+
 <div id="dlg-buttons">
     <a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()">Save</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel"

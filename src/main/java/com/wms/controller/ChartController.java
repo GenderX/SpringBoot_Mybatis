@@ -29,6 +29,7 @@ public class ChartController {
 
     /**
      * 生成柱状图
+     *
      * @return
      */
     @RequestMapping("/getTest")
@@ -52,38 +53,68 @@ public class ChartController {
         // 柱状数据, 。
         Bar bar1 = new Bar("入库量");
         List<weeklyAmountBO> invBO = chartService.selectWeeklyInboundAmount();
-        int[] Inamount=new int[7];
+        System.out.println(invBO.toString()+"...................");
+        int[] Inamount = new int[7];
         for (weeklyAmountBO bo : invBO) {
-            switch (bo.getWeekday()){
-                case 1:Inamount[0]=bo.getAmount(); break;
-                case 2:Inamount[1]=bo.getAmount(); break;
-                case 3:Inamount[2]=bo.getAmount(); break;
-                case 4:Inamount[3]=bo.getAmount(); break;
-                case 5:Inamount[4]=bo.getAmount(); break;
-                case 6:Inamount[5]=bo.getAmount(); break;
-                case 7:Inamount[6]=bo.getAmount(); break;
+            switch (bo.getWeekday()) {
+                case 1:
+                    Inamount[0] = bo.getAmount();
+                    break;
+                case 2:
+                    Inamount[1] = bo.getAmount();
+                    break;
+                case 3:
+                    Inamount[2] = bo.getAmount();
+                    break;
+                case 4:
+                    Inamount[3] = bo.getAmount();
+                    break;
+                case 5:
+                    Inamount[4] = bo.getAmount();
+                    break;
+                case 6:
+                    Inamount[5] = bo.getAmount();
+                    break;
+                case 0:
+                    Inamount[6] = bo.getAmount();
+                    break;
             }
         }
-        bar1.data(Inamount[0],Inamount[1], Inamount[2], Inamount[3], Inamount[4], Inamount[5], Inamount[6]);
+        bar1.data(Inamount[0], Inamount[1], Inamount[2], Inamount[3], Inamount[4], Inamount[5], Inamount[6]);
         bar1.markPoint().data(new PointData().type(MarkType.max).name("最大值"),
                 new PointData().type(MarkType.min).name("最小值"));
         bar1.markLine().data(new PointData().type(MarkType.average).name("平均值"));
         // 又一个柱状数据
         Bar bar2 = new Bar("出库量");
-        List<weeklyAmountBO> outBO =chartService.selectWeeklyOutboundAmount();
+        int[] Outamount = new int[7];
+        List<weeklyAmountBO> outBO = chartService.selectWeeklyOutboundAmount();
         for (weeklyAmountBO bo : outBO) {
-            switch (bo.getWeekday()){
-                case 1:Inamount[0]=bo.getAmount(); break;
-                case 2:Inamount[1]=bo.getAmount(); break;
-                case 3:Inamount[2]=bo.getAmount(); break;
-                case 4:Inamount[3]=bo.getAmount(); break;
-                case 5:Inamount[4]=bo.getAmount(); break;
-                case 6:Inamount[5]=bo.getAmount(); break;
-                case 7:Inamount[6]=bo.getAmount(); break;
+            switch (bo.getWeekday()) {
+                case 1:
+                    Outamount[0] = bo.getAmount();
+                    break;
+                case 2:
+                    Outamount[1] = bo.getAmount();
+                    break;
+                case 3:
+                    Outamount[2] = bo.getAmount();
+                    break;
+                case 4:
+                    Outamount[3] = bo.getAmount();
+                    break;
+                case 5:
+                    Outamount[4] = bo.getAmount();
+                    break;
+                case 6:
+                    Outamount[5] = bo.getAmount();
+                    break;
+                case 0:
+                    Outamount[6] = bo.getAmount();
+                    break;
             }
 
         }
-        bar2.data(Inamount[0],Inamount[1], Inamount[2], Inamount[3], Inamount[4], Inamount[5], Inamount[6]);
+        bar2.data(Outamount[0], Outamount[1], Outamount[2], Outamount[3], Outamount[4], Outamount[5], Outamount[6]);
         bar2.markPoint().data(new PointData().type(MarkType.max).name("最大值"),
                 new PointData().type(MarkType.min).name("最小值"));
         bar2.markLine().data(new PointData().type(MarkType.average).name("平均值"));
@@ -94,57 +125,58 @@ public class ChartController {
 
     /**
      * 生成Pie图
+     *
      * @return
      */
     @RequestMapping("/getPie")
-    public Object getPie(){
+    public Object getPie() {
 
-            //需要的数据
+        //需要的数据
         List<WHPieChartBO> pieBO = chartService.selectWHPieChartBO();
         String title = "库区库存统计";
         String[] searchs = new String[pieBO.size()];
         int[] datas = new int[pieBO.size()];
         for (int i = 0; i < pieBO.size(); i++) {
-            System.out.println( pieBO.get(i).getName());
-            searchs[i]=pieBO.get(i).getName();
-            datas[i]=pieBO.get(i).getAmount();
+            System.out.println(pieBO.get(i).getName());
+            searchs[i] = pieBO.get(i).getName();
+            datas[i] = pieBO.get(i).getAmount();
         }
 
 
-            //创建option对象
-            Option option = new GsonOption();
+        //创建option对象
+        Option option = new GsonOption();
 
-            //设置标题  二级标题  标题位置
-            option.title().text(title).subtext("二级标题").x("center");
+        //设置标题  二级标题  标题位置
+        option.title().text(title).subtext("二级标题").x("center");
 
-            //设置工具栏 展示  能标记
-            option.toolbox().show(true).feature(Tool.mark);
+        //设置工具栏 展示  能标记
+        option.toolbox().show(true).feature(Tool.mark);
 
-            //设置显示工具格式
-            option.tooltip().show(true).formatter("{a}</br>{b}：{c}/个");
+        //设置显示工具格式
+        option.tooltip().show(true).formatter("{a}</br>{b}：{c}/个");
 
-            //设置图例  图例位置  图例对齐方式 竖列对齐
-            option.legend().data(searchs).x("left").orient(Orient.vertical);
+        //设置图例  图例位置  图例对齐方式 竖列对齐
+        option.legend().data(searchs).x("left").orient(Orient.vertical);
 
-            //填充数据
-            Pie pie = new Pie();//创建饼图对象
+        //填充数据
+        Pie pie = new Pie();//创建饼图对象
 
-            //设置饼图的标题 半径、位置
-            pie.name(title).radius("55%").center("50%","50%");
+        //设置饼图的标题 半径、位置
+        pie.name(title).radius("55%").center("50%", "50%");
 
-            //填充数据
-            for(int i = 0; i < searchs.length; i++){
-                Map<String,Object> map = new HashMap<>();
-                map.put("value",datas[i]);//填充饼图数据
-                map.put("name",searchs[i]);//填充饼图数据对应的搜索引擎
-                pie.data(map);
-            }
-            option.series(pie); //设置数据
+        //填充数据
+        for (int i = 0; i < searchs.length; i++) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("value", datas[i]);//填充饼图数据
+            map.put("name", searchs[i]);//填充饼图数据对应的搜索引擎
+            pie.data(map);
+        }
+        option.series(pie); //设置数据
 
         System.out.println(option.toString());
-            return option.toString();
-        }
-
-
+        return option.toString();
     }
+
+
+}
 

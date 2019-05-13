@@ -38,6 +38,7 @@
         <if test="Name != null and Name!=''">
             and b.Name like "%"#{Name}"%"
         </if>
+        order by a.instocktime desc
     </select>
     <select id="selectWeeklyInboundAmount" resultType="com.wms.model.weeklyAmountBO">
         SELECT
