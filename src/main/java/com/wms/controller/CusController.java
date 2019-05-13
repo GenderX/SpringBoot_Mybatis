@@ -13,11 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @author ：LiCan
- * @date ：Created in 2019/1/4 23:21
- * @description：${description}
- * @modified By：
- * @version: $version$
+
  */
 @Controller
 @RequestMapping(value = "/customer")

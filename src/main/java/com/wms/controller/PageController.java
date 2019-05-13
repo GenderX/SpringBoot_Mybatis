@@ -6,13 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * @author ：LiCan
- * @date ：Created in 2019/1/8 13:31
- * @description：${description}
- * @modified By：
- * @version: $version$
- */
+
 @Controller
 @RequestMapping("/page")
 /**
