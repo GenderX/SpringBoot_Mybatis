@@ -9,13 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * @author ：LiCan
- * @date ：Created in 2019/1/14 13:55
- * @description：${description}
- * @modified By：
- * @version: $version$
- */
+
 @RestController
 
 public class UploadController {
