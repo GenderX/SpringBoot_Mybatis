@@ -127,9 +127,9 @@
        onclick="editUser()">编辑用户</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除用户</a>
 
-    <span>客户编号:</span>
+    <span>员工编号:</span>
     <input id="Number" style="line-height:26px;border:1px solid #ccc">
-    <span>客户名称:</span>
+    <span>员工名称:</span>
     <input id="Name" style="line-height:26px;border:1px solid #ccc">
     <a href="#" class="easyui-linkbutton" plain="false" onclick="doSearch()">Search</a>
 </div>
